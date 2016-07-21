@@ -3,17 +3,18 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <div class="container">
+    <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
-  {{> info}}
-  <div id="app"></div>
+    {{> hello}}
+    {{> info}}
+    <div id="app"></div>
+  </div>
 </body>
 
 <template name="hello">
-  <button>Click Me</button>
+  <button class="btn btn-primary">Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
-  <p>按下玩玩 {{counter}} times.</p>
 </template>
 
 <template name="info">

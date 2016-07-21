@@ -1,2 +1,4 @@
 node_modules/
-.meteor/
+.meteor/local
+.meteor/dev_bundle
+
