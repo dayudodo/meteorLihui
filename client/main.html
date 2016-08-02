@@ -4,11 +4,22 @@
 
 <body>
   <div class="container">
-    <h1>Welcome to Meteor!</h1>
-
-
+    <h1>小本生意财务系统</h1>
+	<!-- {{> insertListForm }} -->
+	{{> listsForm }}
     <div id="app"></div>
   </div>
+  {{ renderPage }}
 </body>
 
+<!-- <template name="insertListForm">
+  {{> quickForm collection="Lists" id="insertBookForm" type="insert"}}
+</template> -->
+
+<template name="listsForm">
+	{{ #each item in lists }}
+		{{ item.text }}
+
+	{{ /each }}
+</template>
 
