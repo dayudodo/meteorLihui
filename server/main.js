@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Products, nameTable }  from '/imports/api/products'
 import xlsx from 'node-xlsx'
 
-var excel = xlsx.parse('/js_stack/meteorLihui/server/chenben.xls');
+var excel = xlsx.parse('/js_stack/meteorLihui/server/products.xls');
 var field= function(str){
 	if (!_.include(_.first(excel[0].data), str) ) {
 		return undefined
@@ -23,26 +23,30 @@ var field= function(str){
 
  
 
-var requireField = '国际条码'
+var requireField = '国际条码' //在从excel中读取值的时候，此值必须存在而且满足条件
 Meteor.startup(() => {
   // code to run on server at startup
   // var Products = new Mongo.collection('Products')
   //从excel中导入相关的数据到mongoDB中
   if (Products.find().count() ==0 ) {
-  	 worksheet1.data.slice(1,worksheet1.data.length).forEach(item=>{
+  	 worksheet1.data.slice(1,worksheet1.data.length).forEach(row=>{
   		 let reg= /\d+/
-  		 if ( reg.test(item[field(requireField)]) ) {
+       let isAllNumber= reg.test(row[field(requireField)])
+  		 if ( isAllNumber ) {
   				let obj = new Object();
   				for (var key in nameTable) {
+            //中文字段名称是个数组，所以需要对每一个进行检测，表里面是否有这个中文字段
+            //如果excel表里面有这个中文字段，才会取值
   					let ArrayChinese = nameTable[key]
-  					for(var chinese of ArrayChinese){
+  					for(var chinese of ArrayChinese) {
+              //判断一下obj[key]的值，是因为头一次的循环可能已经取到值了，后面一个其实就不用取值了。
   						if (field(chinese) && obj[key]==undefined) {
-  							obj[key]=item[field(chinese)]
+  							obj[key]=row[field(chinese)]
   						}
   					}
   				}
   				obj["createdAt"] = new Date()
-  				Products.insert(obj, function(err, result){
+  				Products.insert(obj, function(err, result) {
   					if (err) { console.log(err.message) }
   				})
   		 }

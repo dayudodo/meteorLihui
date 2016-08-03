@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import { Schemas } from '/imports/api/1_schemas'
+import { ProductSchemas } from '/imports/api/1_schemas'
 import Session from 'meteor/session'
  
 // export const dataSource = new Mongo.Collection('dataSource');
@@ -21,7 +21,7 @@ const nameTable = {
 
 
 // console.log( Schemas )
-Products.attachSchema(Schemas.Product);
+Products.attachSchema(ProductSchemas.Product);
 this.Products= Products //必须添加，不然会报错说Products不在global之中
 
 if (Meteor.isServer) {
@@ -32,19 +32,16 @@ if (Meteor.isServer) {
   });
 }
 
-	AdminConfig = {
-		autoForm:{
-		    omitFields: ['createdAt']
-		},
-	 	adminEmails: ['ange@gmail.com'],
-		collections: {
-		  Products: {
-		  	tableColumns:[
-		  		{label:nameTable.productName[0], name:"productName"},
-		  		{label:nameTable.barCode[0], name:"barCode"}
-		  	]
-		  },
-		},
-	};
+AdminConfig = {
+ 	adminEmails: ['ange@gmail.com'],
+	collections: {
+	  Products: {
+	  	tableColumns:[
+	  		{label:nameTable.productName[0], name:"productName"},
+	  		{label:nameTable.barCode[0], name:"barCode"}
+	  	]
+	  },
+	},
+};
 
 export { Products, nameTable }
