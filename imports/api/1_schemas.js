@@ -1,5 +1,23 @@
-const ProductSchemas = {};
+var ProductSchemas = {};
 
+var saleSchema = new SimpleSchema({
+    sailerName:{
+        type: String,
+        label:"销售员",
+        optional:true,
+        max: 10
+    },
+    sailTime:{
+        type: Date,
+        label:"销售时间",
+        optional:true
+    },
+    sailCount:{
+        type: Number,
+        label:"销售数量",
+        optional: true
+    },
+});
 
  ProductSchemas.Product = new SimpleSchema({
     barCode: {
@@ -9,10 +27,18 @@ const ProductSchemas = {};
         unique: true,
         max: 200,
     },
+    barCode_1: {
+        type: String,
+        label: "国际条码1",
+        optional: true,
+        index: 1,
+        max: 200,
+    },
     productName: {
         type: String,
         label: "商品名称",
         optional: true,
+        index: 1,
         max: 200,
     },
     model: {
@@ -86,6 +112,11 @@ const ProductSchemas = {};
         label: "库存",
         optional: true,
         min: 0,
+    },
+    salesRecord:{
+        type: [saleSchema],
+        label: "销售记录表",
+        optional: true,
     },
     comment:{
         type: String,
