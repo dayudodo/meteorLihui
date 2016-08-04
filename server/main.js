@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Products, nameTable }  from '/imports/api/products'
+import { SaleTable } from '/imports/api/sale_table'
 import xlsx from 'node-xlsx'
 
 var excel = xlsx.parse('/js_stack/meteorLihui/server/products.xls');
@@ -52,6 +53,17 @@ Meteor.startup(() => {
   		 }
   	 })
 	};
+//如果销售表不为空，才开始导入，并且一次性导入N多文件。
+  if (SaleTable.find().count()==0) {
+
+  }
+
+  Meteor.publish('products', function tasksPublication() {
+    return Products.find();
+  });
+  Meteor.publish('saletable', function () {
+    return SaleTable.find();
+  });
   
   Products.allow({
     insert: function(){
@@ -64,8 +76,17 @@ Meteor.startup(() => {
       return true;
     }
   });
-
-
+  SaleTable.allow({
+    insert: function(){
+      return true;
+    },
+    update: function(){
+      return true;
+    },
+    remove: function(){
+      return true;
+    }
+  });
 
 });
 

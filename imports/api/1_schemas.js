@@ -1,23 +1,6 @@
 var ProductSchemas = {};
 
-var saleSchema = new SimpleSchema({
-    sailerName:{
-        type: String,
-        label:"销售员",
-        optional:true,
-        max: 10
-    },
-    sailTime:{
-        type: Date,
-        label:"销售时间",
-        optional:true
-    },
-    sailCount:{
-        type: Number,
-        label:"销售数量",
-        optional: true
-    },
-});
+
 
  ProductSchemas.Product = new SimpleSchema({
     barCode: {
@@ -113,11 +96,6 @@ var saleSchema = new SimpleSchema({
         optional: true,
         min: 0,
     },
-    salesRecord:{
-        type: [saleSchema],
-        label: "销售记录表",
-        optional: true,
-    },
     comment:{
         type: String,
         label:"备注",
@@ -132,7 +110,7 @@ var saleSchema = new SimpleSchema({
     },
     createdAt: {
         type: Date,
-        label: "创建时间",
+        label: "商品数据导入时间",
         optional: true,
         defaultValue: new Date(),
         autoform:{

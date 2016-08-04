@@ -15,6 +15,7 @@ Router.route('/about',function(){
 	this.render('about')
 })
 
+
 Router.route('/upload/:filename',function () {
   this.response.end('hi from the server\n'+ this.params.filename);
 }, {where: 'server'});
