@@ -85,10 +85,10 @@ var ProductSchemas = {};
         min: 0
     },
     category:{
-        type: String,
+        type: [String],
         label:"商品类别",
         optional: true,
-        max: 200,
+        max: 20,
     },
     inventory:{
         type: Number,
@@ -96,15 +96,15 @@ var ProductSchemas = {};
         optional: true,
         min: 0,
     },
-    comment:{
+    comment1:{
         type: String,
-        label:"备注",
+        label:"备注1",
         optional: true,
         max: 512,
     },
-    comment_1:{
+    comment2:{
         type: String,
-        label:"备注1",
+        label:"备注2",
         optional: true,
         max: 512,
     },

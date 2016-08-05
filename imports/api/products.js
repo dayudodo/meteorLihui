@@ -45,11 +45,12 @@ AdminConfig = {
 	  Products: {
 	  	tableColumns:[
 	  		{label:nameTable.productName[0], name:"productName"},
-	  		{label:nameTable.barCode[0], name:"barCode"}
+	  		{label:nameTable.barCode[0], name:"barCode"},
+	  		{label:nameTable.singleCostPrice[0], name:"singleCostPrice"}
 	  	]
 	  },
 	  SaleTable:{
-	  	omitFields: ['productId'],
+	  	// omitFields: ['productId'],
 	  	tableColumns:[
 		  	{label: '商品名称', name:'productName()'},
 		  	{label: '销售金额', name:"salesAmount"},
