@@ -7,15 +7,27 @@ Router.route('/',function(){
 	this.render('products')
 })
 
-Router.route('/posts',function(){
-	this.render('posts')
+Router.route('/products',{
+	waitOn(){
+		return Meteor.subscribe('products');
+	},
+	action(){
+		this.render('products');
+	}
 })
 
-Router.route('/about',function(){
-	this.render('about')
-})
+Router.route('/about')
 
 
 Router.route('/upload/:filename',function () {
-  this.response.end('hi from the server\n'+ this.params.filename);
+	var req = this.request;
+	var response = this.response;
+ 	response.end('hi from the server\n'+ this.params.filename);
+}, {where: 'server'});
+
+Router.route('/item', function () {
+	console.log('access item route')
+  var req = this.request;
+  var res = this.response;
+  res.end('hello from the server\n');
 }, {where: 'server'});

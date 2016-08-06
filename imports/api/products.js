@@ -27,15 +27,6 @@ SaleTable.helpers({
 	product(){
 		return Products.findOne(this.productId)
 	},
-	productName(){
-		// console.log(this)
-		// 不够美，但是发现可能是meteor-admin的问题，没有把相关的字段列出来，不过id倒是保存在this之中
-		// 其字段是由tableColumns中定义的，外加 一个_id
-		let sale = SaleTable.findOne({_id:this._id})
-		if (sale) {
-			return Products.findOne({_id:sale.productId}).productName
-		}
-	}
 })
 Products.attachSchema(ProductSchemas.Product);
 
@@ -52,9 +43,15 @@ AdminConfig = {
 	  SaleTable:{
 	  	// omitFields: ['productId'],
 	  	tableColumns:[
-		  	{label: '商品名称', name:'productName()'},
+		  	{label: '国际条码', name:'barCode'},
+		  	{label: '商品名称', name:'productName'},
 		  	{label: '销售金额', name:"salesAmount"},
 		  	{label: '销售数量', name:"salesQuantity"},
+		  	{label: '单台成本价', name:"singleCostPrice"},
+		  	{label: '总成本价', name:"totalCostPrice"},
+		  	{label: '超市提成', name:"marketRoyalty"},
+		  	{label: '利润', name:"profit"},
+		  	{label: '导入来源', name:"importSource"},
 		]
 	  },
 	},

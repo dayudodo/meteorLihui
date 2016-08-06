@@ -96,6 +96,11 @@ var ProductSchemas = {};
         optional: true,
         min: 0,
     },
+    imageUrl:{
+        type: String,
+        label:"产品图片",
+        optional: true,
+    },
     comment1:{
         type: String,
         label:"备注1",
