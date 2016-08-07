@@ -37,9 +37,10 @@ AdminConfig = {
 	collections: {
 	  Products: {
 	  	tableColumns:[
-	  		{label:ProductFields.productName[0], name:"productName"},
 	  		{label:ProductFields.barCode[0], name:"barCode"},
-	  		{label:ProductFields.singleCostPrice[0], name:"singleCostPrice"}
+	  		{label:ProductFields.productName[0], name:"productName"},
+	  		{label:ProductFields.model[0], name:"model"},
+	  		{label:ProductFields.singleCostPrice[0], name:"singleCostPrice"},
 	  	]
 	  },
 	  SaleTable:{
