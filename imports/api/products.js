@@ -1,13 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import { ProductSchemas } from '/imports/api/1_schemas'
+import { ProductSchemas } from '/imports/api/productSchemas'
 import { SaleTable } from '/imports/api/sale_table'
 import Session from 'meteor/session'
+import moment from 'moment'
  
 // export const dataSource = new Mongo.Collection('dataSource');
 const Products = new Mongo.Collection('products');
-const nameTable = {
-	  barCode: 			["国际条码","条码"]
+const ProductFields = {
+	  barCode: 			["国际条码","条码","商品编码"]
 	, productName: 		["商品名称"]
 	, model: 			["商品规格"]
 	, marketUnit: 		["销售单位","计量单位"]
@@ -22,6 +23,7 @@ const nameTable = {
 
 
 // console.log( Schemas )
+this.moment = moment
 this.Products= Products //必须添加，不然会报错说Products不在global之中
 SaleTable.helpers({
 	product(){
@@ -35,9 +37,9 @@ AdminConfig = {
 	collections: {
 	  Products: {
 	  	tableColumns:[
-	  		{label:nameTable.productName[0], name:"productName"},
-	  		{label:nameTable.barCode[0], name:"barCode"},
-	  		{label:nameTable.singleCostPrice[0], name:"singleCostPrice"}
+	  		{label:ProductFields.productName[0], name:"productName"},
+	  		{label:ProductFields.barCode[0], name:"barCode"},
+	  		{label:ProductFields.singleCostPrice[0], name:"singleCostPrice"}
 	  	]
 	  },
 	  SaleTable:{
@@ -58,4 +60,4 @@ AdminConfig = {
 };
 
 
-export { Products, nameTable }
+export { Products, ProductFields }

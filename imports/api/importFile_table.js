@@ -1,3 +1,4 @@
+// 用来保存导入的excel文件信息，主要是获取md5码以及进行唯一性判断
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
