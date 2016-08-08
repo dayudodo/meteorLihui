@@ -4,5 +4,9 @@ Template.findSingleCost.helpers({
 	},
 	data(){
 		return this
-	}
+	},
+	makeUniqueID(){
+		return "update-each-" + this._id;
+	},
+	
 })

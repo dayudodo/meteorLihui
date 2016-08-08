@@ -1,10 +1,15 @@
 <template name= "findSingleCost">
 <h1>寻找没有单价的销售表</h1>
 	{{log}}
-	{{#each data}}
-		{{barCode}}
-		{{productName}}
-		{{singleCostPrice}}
+	{{#each sale in data}}
+		{{sale.barCode}}
+		{{sale.productName}}
 		<br/>
+		{{#autoForm id=makeUniqueID type="update" collection="SaleTable" doc=sale }}
+		 {{> afQuickField name='singleCostPrice' class="col-md-6"}}
+		 {{> afQuickField name='comment1'}}
+		<button type="submit" class="btn btn-primary" >保存</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		{{/autoForm}}
 	{{/each}}
 </template>

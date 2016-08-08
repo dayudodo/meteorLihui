@@ -81,7 +81,7 @@ export const saleSchema = new SimpleSchema({
         label:"导入来源",
         optional: true
     },
-    comments1:{
+    comment1:{
         type: String,
         label:"备注1",
         optional: true
