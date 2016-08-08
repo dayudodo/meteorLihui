@@ -1,3 +1,5 @@
+import { SaleTable } from '/imports/api/sale_table'
+
 Router.configure({
 	layoutTemplate:'layout',
 	notFoundTemplate: 'notFound'
@@ -14,6 +16,14 @@ Router.route('/products',{
 	action(){
 		this.render('products');
 	}
+})
+
+Router.route('/findSingleCost',function(){
+	this.render("findSingleCost", {
+		data: function(){
+			return SaleTable.find({singleCostPrice:{$eq:null}})
+		}
+	})
 })
 
 Router.route('/about')
