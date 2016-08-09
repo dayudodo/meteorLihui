@@ -1,1 +1,6 @@
 /* CSS declarations go here */
+.single-cost {
+	margin-top: 10px;
+	padding-bottom: 5px;
+	border-bottom: #ccc solid 2px;
+}

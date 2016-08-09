@@ -26,6 +26,31 @@ Router.route('/findSingleCost',function(){
 	})
 })
 
+Router.route('/insertSingleCost',function(){
+	this.render("insertSingleCost", {
+		data: function(){
+			let noSingleArray = SaleTable.find({singleCostPrice:{$eq:null}}).fetch()
+			let count =0
+			_.each(noSingleArray, function(row){
+				let product = Products.findOne( {_id: row.productId} )
+				if (!product) {
+					throw new Error('需要添加此产品：'+ row.productId+'|'+row.barCode)
+				}
+				if ( product.singleCostPrice ) {
+					SaleTable.update(
+						{ _id:row._id }, 
+						{$set:
+							{ singleCostPrice: product.singleCostPrice }
+						})
+					count++
+				}
+
+			})
+			return count;
+		}
+	})
+})
+
 Router.route('/about')
 
 
