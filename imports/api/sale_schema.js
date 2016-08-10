@@ -85,5 +85,10 @@ export const saleSchema = new SimpleSchema({
         type: String,
         label:"备注1",
         optional: true
-    }
+    },
+    updatedAt:{
+        type: Date,
+        label:"更新时间",
+        optional: true
+    },
 });

@@ -1,3 +1,4 @@
+import { Template } from 'meteor/templating';
 Template.findSingleCost.helpers({
 	log(){
 		console.log(this)

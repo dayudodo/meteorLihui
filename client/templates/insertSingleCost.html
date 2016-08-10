@@ -1,4 +1,11 @@
 <template name="insertSingleCost">
 	<h1>填充销售表中没有单台成本价的产品</h1>
-	共更新销售表中单价：{{ data }}
+	<div>
+		<a class='btn btn-primary' id="updateSingleCost">更新</a>
+		共更新销售表中单价：<span id="count">0</span>
+	</div>
+	<div>
+		<a class='btn btn-primary' id="updateSameName">从excel更新产品表成本价</a>
+		共更新产品表中单价：<span id="countProductSingle">0</span>
+	</div>
 </template>

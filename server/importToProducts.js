@@ -2,8 +2,8 @@ import { getField } from './common'
 import { Products, ProductFields }  from '/imports/api/products'
 import xlsx from 'node-xlsx'
 import path from 'path'
-import fs from 'fs'
-import md5 from 'blueimp-md5'
+// import fs from 'fs'
+// import md5 from 'blueimp-md5'
 
 export function importToProducts(impFilename){
   //产品中必须有的字段
@@ -37,9 +37,10 @@ export function importToProducts(impFilename){
    // '序号', '国际条码','商品名称','商品规格','销售单位','销售数量','销售金额','单台成本价','总成本价','提成','利润's
    console.log(worksheet1.data[1])
    // console.log(worksheet1.data[1][field('单台成本价')])
-   let canImportProduct = Products.find().count() ==0 
+   // let canImportProduct = Products.find().count() ==0 
+   let canImportProduct = true
    var count = 0
-     if ( true ) {
+     if ( canImportProduct ) {
       console.log("开始导入%s到产品表中...", impFilename)
        worksheet1.data.slice(1,worksheet1.data.length).forEach(row=>{
         let reg= /\d+/
@@ -59,12 +60,11 @@ export function importToProducts(impFilename){
               }
             }
             obj["createdAt"] = new Date()
-            let result = Products.insert(obj, function(err, result) {
+            let result = Products.insert(obj, function(err) {
               if (err) { 
                 console.log(valueOfRequiredField)
                 console.log(err.message) 
                }else {
-                // console.log(result)
                 ++count
                 console.log("第%s条%s成功导入到产品表",count, valueOfRequiredField)
                }

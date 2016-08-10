@@ -1,10 +1,11 @@
-import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor'
 
 
-import { Products, ProductFields }  from '/imports/api/products'
+import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
 import { importFileTable } from '/imports/api/importFile_table'
-import { importToProducts } from './importToProducts'
+// import { importToProducts } from './importToProducts'
+import { updateProductSingle } from './updateProductSingle'
 import { importToSaleTable } from './importToSaleTable'
 
 Meteor.startup(() => {
@@ -31,19 +32,29 @@ Meteor.startup(() => {
     ,['/js_stack/meteorLihui/server/excels/三禾7月小西门明细.xls','2016-07-01']
 
   ]
-  // importToProducts(impFileArray[6][0]);
+
+  var costArray = [
+     ['/js_stack/meteorLihui/server/excels/销售无成本表.xls','2016-08-10']
+  ]
+  // importToProducts( costArray[0][0] );
   // importToSaleTable(impFileArray[11]);
   
   impFileArray.forEach(excel=>{
-    importToSaleTable(excel);
+    importToSaleTable(excel)
   })
 
   Meteor.publish('products', function tasksPublication() {
-    return Products.find();
+    return Products.find()
   });
   Meteor.publish('saletable', function () {
-    return SaleTable.find();
+    return SaleTable.find()
   });
+  Meteor.methods({
+    'productUpdateSingle'(){
+        //从Excel中读取，所以需要在服务器端完成这个任务。
+        updateProductSingle(costArray[0][0])
+    },
+  })
   
   Products.allow({
     insert: function(){
@@ -53,7 +64,7 @@ Meteor.startup(() => {
       return true;
     },
     remove: function(){
-      return true;
+      return true
     }
   });
   SaleTable.allow({

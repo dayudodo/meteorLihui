@@ -1,4 +1,5 @@
-import { nameTable, Products }  from '/imports/api/products'
+import { Products }  from '/imports/api/products'
+import { Template } from 'meteor/templating';
 
 Template.products.helpers({
 	products(){

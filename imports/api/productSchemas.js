@@ -122,6 +122,15 @@ var ProductSchemas = {};
             type: 'datetime-local'
         },
     },
+    updatedAt: {
+        type: Date,
+        label: "更新纪录时间",
+        optional: true,
+        defaultValue: new Date(),
+        autoform:{
+            type: 'datetime-local'
+        },
+    },
 });
 
 

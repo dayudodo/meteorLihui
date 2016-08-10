@@ -1,11 +1,11 @@
-import { ReactiveVar } from 'meteor/reactive-var';
-import React, { Component, PropTypes } from 'react';
-import { render } from 'react-dom'
+// import { ReactiveVar } from 'meteor/reactive-var';
+// import React, { Component, PropTypes } from 'react';
+// import { render } from 'react-dom'
 // import { Router, Route, browserHistory, Link } from 'react-router';
 // import { renderRoutes } from './components/routes.js'
-import { Products, nameTable }  from '/imports/api/products'
+import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
-import { Template } from 'meteor/templating'
+import { Meteor } from 'meteor/meteor';
 
 // import { Template } from 'meteor/templating';
  
