@@ -41,6 +41,7 @@ AdminConfig = {
 	  		{label:ProductFields.productName[0], name:"productName"},
 	  		{label:ProductFields.model[0], name:"model"},
 	  		{label:ProductFields.singleCostPrice[0], name:"singleCostPrice"},
+	  		{label:"更新时间", name:"updatedAt"},
 	  	]
 	  },
 	  SaleTable:{

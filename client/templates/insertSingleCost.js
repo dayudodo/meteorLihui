@@ -9,43 +9,26 @@ Template.insertSingleCost.helpers({
 	// },
 })
 
-//根据产品表里面的单价来更新销售表中的单价
+
 Template.insertSingleCost.events({
-	'click #updateSingleCost'(e,instance){
-		// console.log('clicked')
-		instance.$('#count').text(0)
-		let noSingleArray = SaleTable.find({singleCostPrice:{$eq:null}}).fetch()
-		let count =0
-		//保存相同的时间以便进行统一安排，比如全部更新啥的，以后还会有其它的字段，比如这个纪录是由谁来修改的.
-		let updatedAt = new Date
-		_.each(noSingleArray, function(row){
-			let product = Products.findOne( {_id: row.productId} )
-			if (!product) {
-				throw new Error('需要添加此产品：'+ row.productId+'|'+row.barCode)
-			}
-			if ( product.singleCostPrice ) {
-				SaleTable.update(
-					{ _id:row._id }, 
-					{$set:
-						{ 
-							singleCostPrice: product.singleCostPrice,
-							updatedAt: updatedAt
-						}
-					},	function(err){
-							if(err){ console.log(err); }
-							else{
-								++count
-								console.log(count);
-								instance.$('#count').text(count)
-							}
-					})
-			}
-		})
-	},
-	'click #updateSameName'(e,instance){
+
+	//从excel更新产品表中的单价
+	'click #updateProductSingle'(e,instance){
 		instance.$('#countProductSingle').text(0)
-		let count = Meteor.call('productUpdateSingle')
+		let count = Meteor.call('updateProductSingle')
 		instance.$('#countProductSingle').text(count)
+	},
+	//根据产品表里面的单价来更新销售表中的单价
+	'click #updateSaleSingleFromProduct'(e, instance){
+		instance.$('#countSaleSingle').text(0)
+		let count = Meteor.call('updateSaleSingleFromProduct')
+		instance.$('#countSaleSingle').text(count)
+	},
+	//更新销售表中的空名称
+	'click #updateSaleNoName'(e, instance){
+		instance.$('#countNoName').text(0)
+		let count = Meteor.call('updateSaleNoName')
+		instance.$('#countNoName').text(count)
 	},
 
 })

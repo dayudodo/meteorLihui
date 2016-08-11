@@ -6,6 +6,8 @@ import { SaleTable } from '/imports/api/sale_table'
 import { importFileTable } from '/imports/api/importFile_table'
 // import { importToProducts } from './importToProducts'
 import { updateProductSingle } from './updateProductSingle'
+import { updateSaleSingleFromProduct } from './updateSaleSingleFromProduct'
+import { updateSaleNoName } from './updateSaleNoName'
 import { importToSaleTable } from './importToSaleTable'
 
 Meteor.startup(() => {
@@ -50,9 +52,15 @@ Meteor.startup(() => {
     return SaleTable.find()
   });
   Meteor.methods({
-    'productUpdateSingle'(){
+    'updateProductSingle'(){
         //从Excel中读取，所以需要在服务器端完成这个任务。
         updateProductSingle(costArray[0][0])
+    },
+    'updateSaleSingleFromProduct'(){
+      return updateSaleSingleFromProduct()
+    },
+    'updateSaleNoName'(){
+      updateSaleNoName()
     },
   })
   
