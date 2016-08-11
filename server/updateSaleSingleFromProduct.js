@@ -1,11 +1,14 @@
 import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
+import { exportToExcel } from './exportToExcel'
 
 export function updateSaleSingleFromProduct(){
 	let saleNoSingles = SaleTable.find({ singleCostPrice: {$eq:null} })
 	let updateCount = 0
 	let noCount = 0
 	let updatedAt = new Date()
+	let manualSaleArr = []
+	let exportFileName = '/js_stack/meteorLihui/server/excels/manualSale.xlsx'
 
 	saleNoSingles.forEach(row=>{
 		let product = Products.findOne({_id: row.productId})
@@ -27,11 +30,19 @@ export function updateSaleSingleFromProduct(){
 				})
 		}else {
 			noCount++
+			manualSaleArr.push([row.barCode, row.productName, row.singleCostPrice])
 			console.log("单价要手填:", row.barCode, row.productName)
 		}
 	})	
 	console.log("更新销售表单价%s条", updateCount)
 	console.log("单价要手填%s条", noCount)
+	console.log("导出手填单价表到", exportFileName)
+	let header = ['国际条码','产品名称','单台成本价']
+	exportToExcel({
+		header: header,
+		exportArr: manualSaleArr, 
+		filename: exportFileName,
+	})
 	return updateCount;
 }
 

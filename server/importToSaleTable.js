@@ -1,5 +1,7 @@
 import { getField } from './common'
 import { importToProducts } from './importToProducts'
+import { Products }  from '/imports/api/products'
+import { SaleTable } from '/imports/api/sale_table'
 
 import xlsx from 'node-xlsx'
 import path from 'path'
@@ -59,11 +61,12 @@ export function importToSaleTable(impExcel){
     console.log('该销售文件已经导入过：' + onlyFilename)
     return false
   }else{
-    importFileTable.insert({fileName: onlyFilename, md5: md5Code},  function(err,result){
+    importFileTable.insert({fileName: onlyFilename, md5: md5Code},  function(err){
         if(err){ console.log(err); }
     })
   }
 
+  console.log('开始导入销售文件:', onlyFilename);
   var saleObjArray=[]
   //如果销售表不为空，才开始导入，并且一次性导入N多文件。
   // let canImport = SaleTable.find().count()==0
@@ -129,7 +132,7 @@ export function importToSaleTable(impExcel){
       console.log("saleObjArray.length:",saleObjArray.length)
       var count = 0
       saleObjArray.forEach(function(item){
-        let result = SaleTable.insert(item, (err, result)=> {
+        let result = SaleTable.insert(item, (err)=> {
           if (err) { 
             console.log(err) 
           }

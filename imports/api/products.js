@@ -8,7 +8,7 @@ import moment from 'moment'
 // export const dataSource = new Mongo.Collection('dataSource');
 const Products = new Mongo.Collection('products');
 const ProductFields = {
-	  barCode: 			["国际条码","条码","商品编码"]
+	barCode: 			["国际条码","条码","商品编码"]
 	, productName: 		["商品名称"]
 	, model: 			["商品规格"]
 	, marketUnit: 		["销售单位","计量单位"]
@@ -33,7 +33,7 @@ SaleTable.helpers({
 Products.attachSchema(ProductSchemas.Product);
 
 AdminConfig = {
- 	adminEmails: ['ange@gmail.com'],
+	adminEmails: ['ange@gmail.com'],
 	collections: {
 	  Products: {
 	  	tableColumns:[

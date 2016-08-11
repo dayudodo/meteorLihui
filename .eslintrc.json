@@ -2,6 +2,7 @@
     "env": {
         "browser": true,
         "commonjs": true,
+        "meteor": true,
         "es6": true,
         "node": true
     },
