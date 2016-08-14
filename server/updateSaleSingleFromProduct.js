@@ -30,14 +30,18 @@ export function updateSaleSingleFromProduct(){
 				})
 		}else {
 			noCount++
-			manualSaleArr.push([row.barCode, row.productName, row.singleCostPrice])
+			manualSaleArr.push([row.barCode, 
+								row.productName, 
+								row.singleCostPrice,
+								row.salesAmount/row.salesQuantity
+								])
 			console.log("单价要手填:", row.barCode, row.productName)
 		}
 	})	
 	console.log("更新销售表单价%s条", updateCount)
 	console.log("单价要手填%s条", noCount)
 	console.log("导出手填单价表到", exportFileName)
-	let header = ['国际条码','产品名称','单台成本价']
+	let header = ['国际条码','产品名称','单台成本价','销售单价']
 	exportToExcel({
 		header: header,
 		exportArr: manualSaleArr, 

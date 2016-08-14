@@ -1,4 +1,6 @@
 import { Template } from 'meteor/templating';
+import { Random } from 'meteor/random'
+
 Template.findSingleCost.helpers({
 	log(){
 		console.log(this)
@@ -10,7 +12,7 @@ Template.findSingleCost.helpers({
 		return this.count()
 	},
 	makeUniqueID(){
-		return "update-each-" + this._id;
+		return "update-each-" + Random.id()
 	},
 	
 })

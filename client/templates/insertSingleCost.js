@@ -30,5 +30,10 @@ Template.insertSingleCost.events({
 		let count = Meteor.call('updateSaleNoName')
 		instance.$('#countNoName').text(count)
 	},
+	'click #caculateProfit'(e, instance){
+		instance.$('#countProfit').text(0)
+		let count = Meteor.call('caculateProfit')
+		instance.$('#countProfit').text(count)
+	},
 
 })

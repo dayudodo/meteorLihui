@@ -31,7 +31,7 @@ export function updateProductSingle(impFilename){
       return true;
     }
   }
-  if(checkFieldsError(worksheet1)){ return false; }
+  if(checkFieldsError(worksheet1)){ return false }
 
    // console.log(worksheet1.data[0]);
    console.log(worksheet1.data[1])

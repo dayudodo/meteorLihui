@@ -6,6 +6,7 @@
 import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
 import { Meteor } from 'meteor/meteor';
+import { Random } from 'meteor/random'
 
 // import { Template } from 'meteor/templating';
  
@@ -16,6 +17,7 @@ import './main.html';
 // });
 window.Products = Products
 window.SaleTable = SaleTable
+window.Random = Random
 Meteor.subscribe('products');
 Meteor.subscribe('saletable');
 

@@ -24,7 +24,7 @@ Router.route('/products',{
 Router.route('/findSingleCost',function(){
 	this.render("findSingleCost", {
 		data: function(){
-			return SaleTable.find({singleCostPrice:{$eq:null}})
+			return SaleTable.find( {singleCostPrice:{$eq:null}}, {sort:{barCode:1}} )
 		}
 	})
 })

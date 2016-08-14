@@ -88,7 +88,7 @@ export function importToSaleTable(impExcel){
               let totalCostPrice = row[importSheet1.field(saleArray.totalCostPrice)]
               let marketRoyalty = row[importSheet1.field(saleArray.marketRoyalty)]
               let profit = row[importSheet1.field(saleArray.profit)]
-              console.log(barCode)
+              // console.log(barCode)
               //如果销售数量为0或者销售金额为0，就没必要保存了，有些表其实数量真的是0！
               if (salesQuantity !=0) {
                 let product = Products.findOne({"barCode": `${barCode}`})
@@ -106,14 +106,20 @@ export function importToSaleTable(impExcel){
                 obj["productId"] = product["_id"]
                 // 销售表里面的单台成本价就是产品表里面的
                 // 如果产品 表里没有成本价，就看销售表里面有没有，如果有就添加到产品表中的单价
+                //应该检查导入时产品表里面的单价与销售里面的单价是否一致
                 if (singleCostPrice) {
                   obj["singleCostPrice"]  = singleCostPrice
                   Products.update({_id: product._id}, {$set:{singleCostPrice: singleCostPrice}})
                 }
-                if (product["singleCostPrice"]) {
-                  obj["singleCostPrice"] = product["singleCostPrice"]
+                let pSingle = product["singleCostPrice"]
+                if (pSingle) {
+                  obj["singleCostPrice"] = pSingle
                 }
-                
+                if (singleCostPrice && pSingle) {
+                  if (singleCostPrice != pSingle) {
+                    console.log("成本价不同，销售表：%s 产品表：%s", singleCostPrice, pSingle)
+                  }
+                }
                 obj["barCode"] = barCode
                 obj["productName"] = productName
                 obj["salesQuantity"] = salesQuantity
@@ -139,6 +145,7 @@ export function importToSaleTable(impExcel){
         })
         if (result) { count++ }
       })
+      //输出最后一个纪录看看得到的是否正确，其实应该输出第一个吧？
       console.log(_.last(saleObjArray)) 
       console.log("一共导入销售记录:", count)
     }

@@ -25,11 +25,11 @@ const ProductFields = {
 // console.log( Schemas )
 this.moment = moment
 this.Products= Products //必须添加，不然会报错说Products不在global之中
-SaleTable.helpers({
-	product(){
-		return Products.findOne(this.productId)
-	},
-})
+// SaleTable.helpers({
+// 	product(){
+// 		return Products.findOne(this.productId)
+// 	},
+// })
 Products.attachSchema(ProductSchemas.Product);
 
 AdminConfig = {

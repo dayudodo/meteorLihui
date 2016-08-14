@@ -1,21 +1,26 @@
 import fs from 'fs'
 import xlsx from 'node-xlsx'
 
-/*
-将数据导出为excel文件
+
+/*将数据导出为excel文件
+	let exportArr=[
+		{
+			barCode:13,
+			productName:'abc'
+		},
+		{
+			barCode:14,
+			productName:'super'
+		}
+	]
 */
+
 export function exportToExcel({header, exportArr, filename}){
 	let exportFlatten = []
-	// let exportArr=[
-	// 	{
-	// 		barCode:13,
-	// 		productName:'abc'
-	// 	},
-	// 	{
-	// 		barCode:14,
-	// 		productName:'super'
-	// 	}
-	// ]
+	if (header.length!=_.first(exportArr).length) {
+		console.log()('标题字段数量应与数据一致')
+		return false
+	}
 	exportFlatten.push(header)
 	exportArr.forEach(item=>{
 		exportFlatten.push(_.values(item))
