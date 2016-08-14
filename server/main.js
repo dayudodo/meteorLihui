@@ -15,33 +15,32 @@ import { importToSaleTable } from './importToSaleTable'
 Meteor.startup(() => {
   //从excel中导入相关的数据到mongoDB中
   //需要导入的excel列表，会自动记录已经导入的文件，数组第二项为自定义的导入时间
-  // var impFileArray = [
-  //    ['/js_stack/meteorLihui/server/excels/三禾1月老店销量.xls','2016-01-01']
+  var impFileArray = [
+     ['/js_stack/meteorLihui/server/excels/三禾1月老店销量.xls','2016-01-01']
 
-  //   ,['/js_stack/meteorLihui/server/excels/三禾2月份老店销量.xls','2016-02-01']
+    ,['/js_stack/meteorLihui/server/excels/三禾2月份老店销量.xls','2016-02-01']
 
-  //   ,['/js_stack/meteorLihui/server/excels/三禾3月老店.xls','2016-03-01']
-  //   ,['/js_stack/meteorLihui/server/excels/三禾3月小西门.xls','2016-03-01']
+    ,['/js_stack/meteorLihui/server/excels/三禾3月老店.xls','2016-03-01']
+    ,['/js_stack/meteorLihui/server/excels/三禾3月小西门.xls','2016-03-01']
 
-  //   ,['/js_stack/meteorLihui/server/excels/三禾4月份老店销量.xls','2016-04-01']
-  //   ,['/js_stack/meteorLihui/server/excels/三禾4月份小西门销量.xls','2016-04-01']
+    ,['/js_stack/meteorLihui/server/excels/三禾4月份老店销量.xls','2016-04-01']
+    ,['/js_stack/meteorLihui/server/excels/三禾4月份小西门销量.xls','2016-04-01']
 
+    ,['/js_stack/meteorLihui/server/excels/三禾5月份老店销售.xls','2016-05-01']
+    ,['/js_stack/meteorLihui/server/excels/三禾5月份小西门销量.xls','2016-05-01']
+
+    ,['/js_stack/meteorLihui/server/excels/三禾6月份老店销量.xls','2016-06-01']
+    ,['/js_stack/meteorLihui/server/excels/三禾6月小西门.xls','2016-06-01']
+
+    ,['/js_stack/meteorLihui/server/excels/三禾7月老店.xls','2016-07-01']
+    ,['/js_stack/meteorLihui/server/excels/三禾7月小西门明细.xls','2016-07-01']
+  ]
+  //   var impFileArray = [
+
+  //    ['/js_stack/meteorLihui/server/excels/三禾2月份老店销量.xls','2016-02-01']
   //   ,['/js_stack/meteorLihui/server/excels/三禾5月份老店销售.xls','2016-05-01']
-  //   ,['/js_stack/meteorLihui/server/excels/三禾5月份小西门销量.xls','2016-05-01']
-
-  //   ,['/js_stack/meteorLihui/server/excels/三禾6月份老店销量.xls','2016-06-01']
-  //   ,['/js_stack/meteorLihui/server/excels/三禾6月小西门.xls','2016-06-01']
-
-  //   ,['/js_stack/meteorLihui/server/excels/三禾7月老店.xls','2016-07-01']
-  //   ,['/js_stack/meteorLihui/server/excels/三禾7月小西门明细.xls','2016-07-01']
 
   // ]
-    var impFileArray = [
-
-     ['/js_stack/meteorLihui/server/excels/三禾2月份老店销量.xls','2016-02-01']
-    ,['/js_stack/meteorLihui/server/excels/三禾5月份老店销售.xls','2016-05-01']
-
-  ]
 
   var costArray = [
      ['/js_stack/meteorLihui/server/excels/销售无成本表.xls','2016-08-10']
@@ -73,7 +72,10 @@ Meteor.startup(() => {
     },
     'caculateProfit'(){
       caculateProfit()
-    }
+    },
+    'checkSameNameSingle'(){
+      checkSameNameSingle()
+    },
   })
   
   Products.allow({

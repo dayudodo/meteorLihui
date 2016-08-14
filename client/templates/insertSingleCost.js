@@ -14,26 +14,31 @@ Template.insertSingleCost.events({
 
 	//从excel更新产品表中的单价
 	'click #updateProductSingle'(e,instance){
-		instance.$('#countProductSingle').text(0)
+		instance.$('#updateProductSingleCount').text(0)
 		let count = Meteor.call('updateProductSingle')
-		instance.$('#countProductSingle').text(count)
+		instance.$('#updateProductSingleCount').text(count)
 	},
 	//根据产品表里面的单价来更新销售表中的单价
 	'click #updateSaleSingleFromProduct'(e, instance){
-		instance.$('#countSaleSingle').text(0)
+		instance.$('#updateSaleSingleFromProductCount').text(0)
 		let count = Meteor.call('updateSaleSingleFromProduct')
-		instance.$('#countSaleSingle').text(count)
+		instance.$('#updateSaleSingleFromProductCount').text(count)
 	},
 	//更新销售表中的空名称
 	'click #updateSaleNoName'(e, instance){
-		instance.$('#countNoName').text(0)
+		instance.$('#updateSaleNoNameCount').text(0)
 		let count = Meteor.call('updateSaleNoName')
-		instance.$('#countNoName').text(count)
+		instance.$('#updateSaleNoNameCount').text(count)
 	},
 	'click #caculateProfit'(e, instance){
-		instance.$('#countProfit').text(0)
+		instance.$('#caculateProfitCount').text(0)
 		let count = Meteor.call('caculateProfit')
-		instance.$('#countProfit').text(count)
+		instance.$('#caculateProfitCount').text(count)
+	},
+	'click #checkSameNameSingle'(e, instance){
+		instance.$('#checkSameNameSingleCount').text(0)
+		let count = Meteor.call('checkSameNameSingle')
+		instance.$('#checkSameNameSingleCount').text(count)
 	},
 
 })
