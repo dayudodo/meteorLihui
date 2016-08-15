@@ -17,8 +17,13 @@ export function caculateProfit(){
 		//如果有单价才会去计算，不然一个空值可能会出错。
 		if (row.singleCostPrice) {
 			let profit = row.salesAmount*(1-0.13) - row.singleCostPrice * row.salesQuantity
+			let saleSingle = row.salesAmount / row.salesQuantity
 			console.log(row.productName, row.barCode, row.profit, twoDecimal(profit))
 			// console.log("%s %s %s 计算利润%s",row.productName, row.barCode, row.profit, twoDecimal(profit))
+			if (profit < 0) {
+				console.log("错误：成本%s>售价%s", row.singleCostPrice, saleSingle, row.importSource )
+				return false;
+			};
 			SaleTable.update({_id: row._id},
 			{$set:
 				{

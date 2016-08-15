@@ -17,6 +17,10 @@ import xlsx from 'node-xlsx'
 
 export function exportToExcel({header, exportArr, filename}){
 	let exportFlatten = []
+	if (_.isEmpty(exportArr)) {
+		console.log("exportArr不能为空")
+		return false
+	}
 	if (header.length!=_.first(exportArr).length) {
 		console.log()('标题字段数量应与数据一致')
 		return false

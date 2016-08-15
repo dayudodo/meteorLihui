@@ -39,6 +39,11 @@ export function updateSaleSingleFromProduct(){
 		}
 	})	
 	console.log("更新销售表单价%s条", updateCount)
+	if (manualSaleArr.length == 0) {
+		console.log("不需要手填单价")
+		return false
+	}
+	
 	console.log("单价要手填%s条", noCount)
 	console.log("导出手填单价表到", exportFileName)
 	let header = ['国际条码','产品名称','单台成本价','销售单价']
