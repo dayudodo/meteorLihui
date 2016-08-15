@@ -4,6 +4,7 @@ import { ProductSchemas } from '/imports/api/productSchemas'
 import { SaleTable } from '/imports/api/sale_table'
 import Session from 'meteor/session'
 import moment from 'moment'
+
  
 // export const dataSource = new Mongo.Collection('dataSource');
 const Products = new Mongo.Collection('products');
@@ -24,6 +25,7 @@ const ProductFields = {
 
 // console.log( Schemas )
 this.moment = moment
+
 this.Products= Products //必须添加，不然会报错说Products不在global之中
 // SaleTable.helpers({
 // 	product(){

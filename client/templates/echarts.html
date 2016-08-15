@@ -1,0 +1,51 @@
+<template name="echarts">
+	<div id="profit" style="width: 600px;height:400px;"></div>
+	<script type="text/javascript">
+	        // 基于准备好的dom，初始化echarts实例
+	        var myChart = echarts.init(document.getElementById('profit'));
+
+	        // 指定图表的配置项和数据
+	        var option = {
+	        	color:['#3398DB'],
+	            title: {
+	                text: '月利润表'
+	            },
+	            tooltip: {},
+	            legend: {
+	                data:['利润']
+	            },
+	            xAxis: {
+	                data: ["一月","二月","三月","四月","五月","六月"]
+	            },
+	            yAxis: {},
+	            series: [{{ dataSource }}]
+	        };
+
+	        // 使用刚指定的配置项和数据显示图表。
+	        myChart.setOption(option);
+	</script>
+	<div id="sales" style="width: 600px;height:400px;"></div>
+	<script type="text/javascript">
+	        // 基于准备好的dom，初始化echarts实例
+	        var saleChart = echarts.init(document.getElementById('sales'));
+
+	        // 指定图表的配置项和数据
+	        var option = {
+	            title: {
+	                text: '月销量表'
+	            },
+	            tooltip: {},
+	            legend: {
+	                data:['销量']
+	            },
+	            xAxis: {
+	                data: ["一月","二月","三月","四月","五月","六月"]
+	            },
+	            yAxis: {},
+	            series: [{{ saleSource }}]
+	        };
+
+	        // 使用刚指定的配置项和数据显示图表。
+	        saleChart.setOption(option);
+	    </script>
+</template>

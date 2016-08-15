@@ -7,6 +7,7 @@ import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random'
+import echarts from 'echarts'
 
 // import { Template } from 'meteor/templating';
  
@@ -18,6 +19,7 @@ import './main.html';
 window.Products = Products
 window.SaleTable = SaleTable
 window.Random = Random
+window.echarts = echarts
 Meteor.subscribe('products');
 Meteor.subscribe('saletable');
 

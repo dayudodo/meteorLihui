@@ -33,6 +33,8 @@ Router.route('/insertSingleCost',function(){
 	this.render("insertSingleCost")
 })
 
+Router.route('echarts')
+
 Router.route('/about')
 
 

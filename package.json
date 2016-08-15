@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "blueimp-md5": "^2.3.0",
+    "echarts": "^3.2.2",
     "meteor-node-stubs": "~0.2.0",
     "moment": "^2.14.1",
     "node-xlsx": "^0.7.1",
