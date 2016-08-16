@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor'
 
-
 import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
 import { importFileTable } from '/imports/api/importFile_table'
@@ -10,6 +9,7 @@ import { updateSaleSingleFromProduct } from './updateSaleSingleFromProduct'
 import { updateSaleNoName } from './updateSaleNoName'
 import { caculateProfit } from './caculateProfit'
 import { checkSameNameSingle } from './checkSameNameSingle'
+import { checkSameBarCode } from './checkSameBarCode'
 import { importToSaleTable } from './importToSaleTable'
 
 Meteor.startup(() => {
@@ -71,10 +71,13 @@ Meteor.startup(() => {
       updateSaleNoName()
     },
     'caculateProfit'(){
-      caculateProfit()
+      caculateProfit({replaceError: true})
     },
     'checkSameNameSingle'(){
       checkSameNameSingle()
+    },
+    'checkSameBarCode'(){
+      checkSameBarCode()
     },
   })
   

@@ -8,7 +8,8 @@ let functionalArray = [
 	["updateSaleSingleFromProduct", "根据产品表里面的单价来更新销售表中的单价"],
 	["updateSaleNoName", "更新销售表中的空名称"],
 	["caculateProfit", "计算利润"],
-	["checkSameNameSingle", "检测名称相同而单价不同"]
+	["checkSameNameSingle", "检测名称相同而单价不同"],
+	["checkSameBarCode","条码同商品名不同"]
 ]
 functionalArray.forEach(row=>{
 	let item = row[0]
