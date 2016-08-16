@@ -16,6 +16,7 @@ export function importToSaleTable(impExcel){
   const saleArray = {
       barCode:        "国际条码"
     , productName:    "商品名称"
+    , model:          "商品规格"
     , salesQuantity:  "销售数量"
     , salesAmount:    "销售金额"
     , singleCostPrice:  "单台成本价"
@@ -32,6 +33,7 @@ export function importToSaleTable(impExcel){
     , salesAmount:    "销售金额"
   }
   //需要导入的文件列表，应该保存一项内部的文件列表啥的！
+  //todo: 简化
   var impFilename = impExcel[0]
   var sailTime = new Date(impExcel[1])
   var onlyFilename = path.basename(impFilename) 
@@ -85,6 +87,7 @@ export function importToSaleTable(impExcel){
               //中文字段名称是个数组，所以需要对每一个进行检测，表里面是否有这个中文字段
               //如果excel表里面有这个中文字段，才会取值
               let barCode = row[importSheet1.field(saleArray.barCode)]
+              let model = row[importSheet1.field(saleArray.model)]
               let productName = row[importSheet1.field(saleArray.productName)]
               let singleCostPrice = row[importSheet1.field(saleArray.singleCostPrice)]
               let salesQuantity = row[importSheet1.field(saleArray.salesQuantity)]
@@ -126,6 +129,7 @@ export function importToSaleTable(impExcel){
                 }
                 obj["barCode"] = barCode
                 obj["productName"] = productName
+                obj["model"] = model
                 obj["salesQuantity"] = salesQuantity
                 obj["salesAmount"] = salesAmount
                 obj["totalCostPrice"] = totalCostPrice

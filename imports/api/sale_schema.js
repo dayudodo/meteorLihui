@@ -19,6 +19,12 @@ export const saleSchema = new SimpleSchema({
         index: 1,
         max: 200,
     },
+    model: {
+        type: String,
+        label: "商品规格",
+        optional: true,
+        max: 200,
+    },
     sailerName:{
         type: String,
         label:"销售员",
