@@ -51,6 +51,7 @@ export function updateSaleSingleFromProduct(){
 		header: header,
 		exportArr: manualSaleArr, 
 		filename: exportFileName,
+		uniq: true
 	})
 	return updateCount;
 }

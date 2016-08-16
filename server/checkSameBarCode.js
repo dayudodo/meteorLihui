@@ -23,7 +23,6 @@ export function checkSameBarCode(){
 		header: header,
 		exportArr: outputArr, 
 		filename: filename,
-		uniq: false
 	})
 	console.log("条码同商品名不同导出到：", filename)
 }

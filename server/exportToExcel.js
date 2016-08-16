@@ -15,7 +15,7 @@ import xlsx from 'node-xlsx'
 	]
 */
 
-export function exportToExcel({header, exportArr, filename, uniq=true}){
+export function exportToExcel({header, exportArr, filename, uniq=false}){
 	let exportFlatten = []
 	if (_.isEmpty(exportArr)) {
 		console.log("exportArr不能为空")
