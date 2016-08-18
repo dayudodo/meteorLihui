@@ -30,7 +30,7 @@ Template.huiCharts.onRendered(function () {
 			myChart.setOption(option);
 			window.onresize = myChart.resize
 			myChart.on('click', function (params) {
-			    // console.log(params.dataIndex)
+			    // 改变当前月份
 			    Session.set('month', _.pluck(result,0)[params.dataIndex])
 			    //显示当月利润最高的10项，其余的可以单独点击进行查看当月利润表
 			    Meteor.call('profitTop10', params.dataIndex, function(err, top10Result){
@@ -57,5 +57,7 @@ Template.huiCharts.helpers({
 	},
 	month(){
 		return Session.get('month')
-	}
+	},
+
 })
+

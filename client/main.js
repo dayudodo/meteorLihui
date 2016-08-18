@@ -37,3 +37,8 @@ Meteor.startup(() => {
 // Accounts.ui.config({
 //     passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 // });
+
+Template.registerHelper('twoDecimal',(num)=>{
+		return Math.round(num*100)/100
+	}
+)
