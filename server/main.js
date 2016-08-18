@@ -10,7 +10,7 @@ import { updateSaleNoName } from './updateSaleNoName'
 import { caculateProfit } from './caculateProfit'
 import { checkSameNameSingle } from './checkSameNameSingle'
 import { checkSameBarCode } from './checkSameBarCode'
-import { everyMonthProfit, profitTop10 } from './everyMonthProfit'
+import { everyMonthProfit, s_profitTop10 } from './everyMonthProfit'
 import { importToSaleTable } from './importToSaleTable'
 
 Meteor.startup(() => {
@@ -94,8 +94,8 @@ Meteor.startup(() => {
       return everyMonthProfit()
       // return [1,2,3]
     },
-    'profitTop10'(index){
-      return profitTop10(index)
+    's_profitTop10'(index){
+      return s_profitTop10(index)
     }
   })
   
