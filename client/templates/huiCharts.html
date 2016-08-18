@@ -1,6 +1,28 @@
 <template name="huiCharts">
-	<div id="profit" style="width: 600px;height:400px;"></div>
-
+	<div class="row">
+		<div id="profit" style="height:500px; " class="col-md-6"></div>
+		<div class="col-md-6">
+			<center><h2 >{{ month }}利润前十</h2></center>
+			<table class="table table-striped">
+			      <thead>
+			        <tr>
+			          <th>国际条码</th>
+			          <th>商品名称</th>
+			          <th>利润</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	{{#each top10}}
+			      		<tr>
+			      		  <td>{{barCode  }}</td>
+			      		  <td>{{productName}}</td>
+			      		  <td>{{profit}}</td>
+			      		</tr>
+			      	{{/each}}
+			      </tbody>
+		    </table>
+		</div>
+	</div>
 	<div id="sales" style="width: 600px;height:400px;"></div>
 	<script type="text/javascript">
 	        // 基于准备好的dom，初始化echarts实例

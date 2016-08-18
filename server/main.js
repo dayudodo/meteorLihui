@@ -10,7 +10,7 @@ import { updateSaleNoName } from './updateSaleNoName'
 import { caculateProfit } from './caculateProfit'
 import { checkSameNameSingle } from './checkSameNameSingle'
 import { checkSameBarCode } from './checkSameBarCode'
-import { everyMonthProfit } from './everyMonthProfit'
+import { everyMonthProfit, profitTop10 } from './everyMonthProfit'
 import { importToSaleTable } from './importToSaleTable'
 
 Meteor.startup(() => {
@@ -55,6 +55,10 @@ Meteor.startup(() => {
   Meteor.publish('saletable', function () {
     return SaleTable.find()
   });
+  Meteor.publish('everyMonthProfit', function(){
+    return everyMonthProfit()
+  })
+
   Meteor.methods({
     'updateProductSingle'(){
         //从Excel中读取，所以需要在服务器端完成这个任务。
@@ -81,15 +85,18 @@ Meteor.startup(() => {
       })
     },
     'dropDatabase'(){
-      Products.rawCollection().drop()
-      SaleTable.rawCollection().drop()
-      importFileTable.rawCollection().drop()
+      Products.remove({})
+      SaleTable.remove({})
+      importFileTable.remove({})
       console.log("产品表及销售表、导入文件列表全部清空")
     },
     'everyMonthProfit'(){
       return everyMonthProfit()
       // return [1,2,3]
     },
+    'profitTop10'(index){
+      return profitTop10(index)
+    }
   })
   
   Products.allow({
