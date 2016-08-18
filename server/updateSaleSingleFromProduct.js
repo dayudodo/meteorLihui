@@ -32,6 +32,7 @@ export function updateSaleSingleFromProduct(){
 			noCount++
 			manualSaleArr.push([row.barCode, 
 								row.productName, 
+								row.model,
 								row.singleCostPrice,
 								row.salesAmount/row.salesQuantity
 								])
@@ -46,7 +47,7 @@ export function updateSaleSingleFromProduct(){
 	
 	console.log("单价要手填%s条", noCount)
 	console.log("导出手填单价表到", exportFileName)
-	let header = ['国际条码','产品名称','单台成本价','销售单价']
+	let header = ['国际条码','产品名称','商品规格','单台成本价','销售单价']
 	exportToExcel({
 		header: header,
 		exportArr: manualSaleArr, 

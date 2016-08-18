@@ -2,18 +2,6 @@ import fs from 'fs'
 import xlsx from 'node-xlsx'
 
 
-/*将数据导出为excel文件
-	let exportArr=[
-		{
-			barCode:13,
-			productName:'abc'
-		},
-		{
-			barCode:14,
-			productName:'super'
-		}
-	]
-*/
 
 export function exportToExcel({header, exportArr, filename, uniq=false}){
 	let exportFlatten = []
@@ -35,4 +23,19 @@ export function exportToExcel({header, exportArr, filename, uniq=false}){
 	}
 	var buffer = xlsx.build([{name: "sheet1", data: exportFlatten}]); // Returns a buffer
 	fs.writeFileSync(filename, buffer, 'binary');
+	return true
 }
+
+
+/*将数据导出为excel文件
+	let exportArr=[
+		{
+			barCode:13,
+			productName:'abc'
+		},
+		{
+			barCode:14,
+			productName:'super'
+		}
+	]
+*/

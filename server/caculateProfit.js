@@ -3,10 +3,9 @@
 // import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
 import { Products }  from '/imports/api/products'
+import { twoDecimal } from './common.js'
 
-function twoDecimal(num){
-	return Math.round(num*100)/100
-}
+
 
 export function caculateProfit({replaceError=false}){
 	// let count = 0
@@ -38,13 +37,13 @@ export function caculateProfit({replaceError=false}){
 				console.log(message)
 			}else {
 				
-				// SaleTable.update({_id: row._id},
-				// {$set:
-				// 	{
-				// 		profit: profit,
-				// 		updatedAt:  updatedAt
-				// 	}
-				// })
+				SaleTable.update({_id: row._id},
+				{$set:
+					{
+						profit: profit,
+						updatedAt:  updatedAt
+					}
+				})
 			}
 		}
 	})

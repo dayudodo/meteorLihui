@@ -10,6 +10,7 @@ import { updateSaleNoName } from './updateSaleNoName'
 import { caculateProfit } from './caculateProfit'
 import { checkSameNameSingle } from './checkSameNameSingle'
 import { checkSameBarCode } from './checkSameBarCode'
+import { everyMonthProfit } from './everyMonthProfit'
 import { importToSaleTable } from './importToSaleTable'
 
 Meteor.startup(() => {
@@ -47,11 +48,6 @@ Meteor.startup(() => {
   ]
   // importToProducts( costArray[0][0] );
   // importToSaleTable(impFileArray[11]);
-  
-  impFileArray.forEach(excel=>{
-    importToSaleTable(excel)
-  })
-  // checkSameNameSingle()
 
   Meteor.publish('products', function tasksPublication() {
     return Products.find()
@@ -78,6 +74,21 @@ Meteor.startup(() => {
     },
     'checkSameBarCode'(){
       checkSameBarCode()
+    },
+    'importToSaleTable'(){ //导入所有的excel文件销售数据表SaleTable中
+      impFileArray.forEach(excel=>{
+        importToSaleTable(excel)
+      })
+    },
+    'dropDatabase'(){
+      Products.rawCollection().drop()
+      SaleTable.rawCollection().drop()
+      importFileTable.rawCollection().drop()
+      console.log("产品表及销售表、导入文件列表全部清空")
+    },
+    'everyMonthProfit'(){
+      return everyMonthProfit()
+      // return [1,2,3]
     },
   })
   

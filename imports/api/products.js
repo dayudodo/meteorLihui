@@ -51,6 +51,7 @@ AdminConfig = {
 	  	tableColumns:[
 		  	{label: '国际条码', name:'barCode'},
 		  	{label: '商品名称', name:'productName'},
+		  	{label: '商品规格', name:'model'},
 		  	{label: '销售金额', name:"salesAmount"},
 		  	{label: '销售数量', name:"salesQuantity"},
 		  	{label: '单台成本价', name:"singleCostPrice"},

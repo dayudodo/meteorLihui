@@ -15,14 +15,18 @@ export function checkSameBarCode(){
 				outputArr.push([r.barCode, r.productName, r.model, r.importSource])
 				// outputArr = outputArr.concat([[r.barCode, r.productName, r.importSource]])
 			})
-		};
+		}
 	})
-	let header = ['国际条码','商品名称','商品规格','导入来源']
-	let filename = "/js_stack/meteorLihui/server/output/checkSameBarCode.xlsx"
-	exportToExcel({
-		header: header,
-		exportArr: outputArr, 
-		filename: filename,
-	})
-	console.log("条码同商品名不同导出到：", filename)
+	if (outputArr.length ==0 ) {
+		console.log("条码与商品名称正常")
+	}else {
+		let header = ['国际条码','商品名称','商品规格','导入来源']
+		let filename = "/js_stack/meteorLihui/server/output/checkSameBarCode.xlsx"
+		exportToExcel({
+			header: header,
+			exportArr: outputArr, 
+			filename: filename,
+		})?
+		console.log("条码同商品名不同导出到：", filename) : null
+	}
 }

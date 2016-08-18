@@ -6,3 +6,7 @@ export const getField = function(str){
       return _.first(this.data).indexOf(str)
     }
 }
+
+export function twoDecimal(num){
+	return Math.round(num*100)/100
+}
