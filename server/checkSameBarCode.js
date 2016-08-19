@@ -21,7 +21,7 @@ export function checkSameBarCode(){
 		console.log("条码与商品名称正常")
 	}else {
 		let header = ['国际条码','商品名称','商品规格','导入来源']
-		let filename = "/js_stack/meteorLihui/server/output/checkSameBarCode.xlsx"
+		let filename = `${absoluteBasePath}/server/output/checkSameBarCode.xlsx`
 		exportToExcel({
 			header: header,
 			exportArr: outputArr, 

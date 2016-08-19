@@ -13,6 +13,7 @@ let functionalArray = [
 	["checkSameNameSingle", "检测名称相同而单价不同"],
 	["checkSameBarCode","条码同商品名不同"],
 	["everyMonthProfit","每个月利润"],
+	["caculateInventory","计算库存"],
 	["dropDatabase","清空数据库","btn-warning"],
 ]
 functionalArray.forEach(row=>{

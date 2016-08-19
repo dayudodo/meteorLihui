@@ -11,31 +11,41 @@ import { caculateProfit } from './caculateProfit'
 import { checkSameNameSingle } from './checkSameNameSingle'
 import { checkSameBarCode } from './checkSameBarCode'
 import { everyMonthProfit, s_profitTop10 } from './everyMonthProfit'
+import { caculateInventory } from './caculateInventory'
 import { importToSaleTable } from './importToSaleTable'
 
+import path from 'path'
+
+// 全局绝对路径变量
+absoluteBasePath = path.resolve('../../../../../.');
 Meteor.startup(() => {
   //从excel中导入相关的数据到mongoDB中
   //需要导入的excel列表，会自动记录已经导入的文件，数组第二项为自定义的导入时间
-  var impFileArray = [
-     ['/js_stack/meteorLihui/server/excels/三禾1月老店销量.xls','2016-01-01']
+  
+  var impFileArray = 
+  [
+       ['三禾1月老店销量.xls','2016-01-01']
 
-    ,['/js_stack/meteorLihui/server/excels/三禾2月份老店销量.xls','2016-02-01']
+      ,['三禾2月份老店销量.xls','2016-02-01']
 
-    ,['/js_stack/meteorLihui/server/excels/三禾3月老店.xls','2016-03-01']
-    ,['/js_stack/meteorLihui/server/excels/三禾3月小西门.xls','2016-03-01']
+      ,['三禾3月老店.xls','2016-03-01']
+      ,['三禾3月小西门.xls','2016-03-01']
 
-    ,['/js_stack/meteorLihui/server/excels/三禾4月份老店销量.xls','2016-04-01']
-    ,['/js_stack/meteorLihui/server/excels/三禾4月份小西门销量.xls','2016-04-01']
+      ,['三禾4月份老店销量.xls','2016-04-01']
+      ,['三禾4月份小西门销量.xls','2016-04-01']
 
-    ,['/js_stack/meteorLihui/server/excels/三禾5月份老店销售.xls','2016-05-01']
-    ,['/js_stack/meteorLihui/server/excels/三禾5月份小西门销量.xls','2016-05-01']
+      ,['三禾5月份老店销售.xls','2016-05-01']
+      ,['三禾5月份小西门销量.xls','2016-05-01']
 
-    ,['/js_stack/meteorLihui/server/excels/三禾6月份老店销量.xls','2016-06-01']
-    ,['/js_stack/meteorLihui/server/excels/三禾6月小西门.xls','2016-06-01']
+      ,['三禾6月份老店销量.xls','2016-06-01']
+      ,['三禾6月小西门.xls','2016-06-01']
 
-    ,['/js_stack/meteorLihui/server/excels/三禾7月老店.xls','2016-07-01']
-    ,['/js_stack/meteorLihui/server/excels/三禾7月小西门明细.xls','2016-07-01']
+      ,['三禾7月老店.xls','2016-07-01']
+      ,['三禾7月小西门明细.xls','2016-07-01']
   ]
+  impFileArray.forEach(item=>{
+    item[0] = absoluteBasePath + '/server/excels/' + item[0]
+  })
   //   var impFileArray = [
 
   //    ['/js_stack/meteorLihui/server/excels/三禾2月份老店销量.xls','2016-02-01']
@@ -44,7 +54,7 @@ Meteor.startup(() => {
   // ]
 
   var costArray = [
-     ['/js_stack/meteorLihui/server/excels/销售无成本表.xls','2016-08-10']
+     [`${absoluteBasePath}/server/excels/销售无成本表.xls`,'2016-08-10']
   ]
   // importToProducts( costArray[0][0] );
   // importToSaleTable(impFileArray[11]);
@@ -96,6 +106,9 @@ Meteor.startup(() => {
     },
     's_profitTop10'(index){
       return s_profitTop10(index)
+    },
+    'caculateInventory'(index){
+      return caculateInventory(index)
     }
   })
   

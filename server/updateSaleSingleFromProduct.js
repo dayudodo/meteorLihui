@@ -8,7 +8,7 @@ export function updateSaleSingleFromProduct(){
 	let noCount = 0
 	let updatedAt = new Date()
 	let manualSaleArr = []
-	let exportFileName = '/js_stack/meteorLihui/server/output/manualSale.xlsx'
+	let exportFileName = `${absoluteBasePath}/server/output/manualSale.xlsx`
 
 	saleNoSingles.forEach(row=>{
 		let product = Products.findOne({_id: row.productId})
