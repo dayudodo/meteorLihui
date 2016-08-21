@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 // import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
-import { Router } from 'meteor/iron:router'
+// import { Router } from 'meteor/iron:router'
 
 Router.configure({
 	layoutTemplate:'layout',
@@ -10,6 +10,8 @@ Router.configure({
 
 Router.route('/',function(){
 	this.render('products')
+},{
+	name:'/'
 })
 
 Router.route('/products',{
@@ -34,8 +36,11 @@ Router.route('/insertSingleCost',function(){
 })
 
 Router.route('huiCharts')
+Router.route('barcodeScanner')
 
-Router.route('/about')
+Router.route('/about',{
+	name:'about',
+})
 
 
 Router.route('/upload/:filename',function () {

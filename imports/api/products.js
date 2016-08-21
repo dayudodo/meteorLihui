@@ -5,7 +5,8 @@ import { SaleTable } from '/imports/api/sale_table'
 import Session from 'meteor/session'
 import moment from 'moment'
 
- 
+import './routes.js'
+
 // export const dataSource = new Mongo.Collection('dataSource');
 const Products = new Mongo.Collection('products');
 const ProductFields = {

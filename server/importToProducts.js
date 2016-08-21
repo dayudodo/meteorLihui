@@ -1,4 +1,4 @@
-import { getField } from './common'
+import { getField } from '/imports/api/common'
 import { Products, ProductFields }  from '/imports/api/products'
 import xlsx from 'node-xlsx'
 import path from 'path'

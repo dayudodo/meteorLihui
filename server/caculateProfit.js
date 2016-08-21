@@ -3,7 +3,7 @@
 // import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
 import { Products }  from '/imports/api/products'
-import { twoDecimal } from './common.js'
+import { twoDecimal } from '/imports/api/common'
 
 
 

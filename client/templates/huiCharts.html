@@ -4,6 +4,7 @@
 		<div class="col-md-6">
 			{{#if profitTop10}}
 				<center><h2 >{{ month }}利润前十</h2></center>
+				<center><h2 >合计：{{ currentProfit }}元</h2></center>
 				<table class="table table-striped">
 				      <thead>
 				        <tr>
@@ -25,28 +26,5 @@
 			{{/if }}
 		</div>
 	</div>
-	<div id="sales" style="width: 600px;height:400px;"></div>
-	<script type="text/javascript">
-	        // 基于准备好的dom，初始化echarts实例
-	        var saleChart = echarts.init(document.getElementById('sales'));
 
-	        // 指定图表的配置项和数据
-	        var option = {
-	            title: {
-	                text: '月销量表'
-	            },
-	            tooltip: {},
-	            legend: {
-	                data:['销量']
-	            },
-	            xAxis: {
-	                data: ["一月","二月","三月","四月","五月","六月"]
-	            },
-	            yAxis: {},
-	            series: [{{ saleSource }}]
-	        };
-
-	        // 使用刚指定的配置项和数据显示图表。
-	        saleChart.setOption(option);
-	    </script>
 </template>

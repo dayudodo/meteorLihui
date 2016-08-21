@@ -11,7 +11,6 @@ import echarts from 'echarts'
 
 // import { Template } from 'meteor/templating';
  
-import './main.html';
  
 // Template.body.helpers({
 //   Lists: "list test",
@@ -38,7 +37,3 @@ Meteor.startup(() => {
 //     passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 // });
 
-Template.registerHelper('twoDecimal',(num)=>{
-		return Math.round(num*100)/100
-	}
-)
