@@ -1,3 +1,9 @@
+Template.barcodeScanner.helpers({
+  isMobile(){
+    return Meteor.isCordova
+  },
+})
+
 if (Meteor.isCordova) {
 
   Template.barcodeScanner.events({
@@ -20,3 +26,4 @@ if (Meteor.isCordova) {
   });
 
 }
+

@@ -1,3 +1,7 @@
 <template name="barcodeScanner">
-  <button>Scan</button>
+	{{#if isMobile}}
+	  <button>扫一扫</button>
+	{{else}}
+	  <h1>请使用手机版本扫描</h1>
+	{{/if}}
 </template>
