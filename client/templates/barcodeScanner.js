@@ -1,3 +1,5 @@
+'use strict'
+
 Template.barcodeScanner.helpers({
   isMobile(){
     return Meteor.isCordova

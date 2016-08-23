@@ -1,4 +1,4 @@
-'strict mode'
+'use strict'
 import echarts from 'echarts'
 import { twoDecimal } from '/imports/api/common'
 

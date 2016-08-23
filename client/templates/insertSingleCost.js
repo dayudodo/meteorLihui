@@ -1,3 +1,5 @@
+'use strict'
+
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Products }  from '/imports/api/products'
@@ -16,18 +18,27 @@ let functionalArray = [
 	["caculateInventory","计算库存"],
 	["dropDatabase","清空数据库","btn-warning"],
 ]
+
+let eventsTemplate = `
+Template.insertSingleCost.events({
+	methods
+})
+`
+let methodsString = ''
 functionalArray.forEach(row=>{
 	let item = row[0]
-	eval(`
-			Template.insertSingleCost.events({
-				'click #${item}'(e, instance){
-					instance.$('#${item}Count').text(0)
-					let count = Meteor.call('${item}')
-					instance.$('#${item}Count').text(count)
-				},
-			})
-		`)
+	let oneMethod = `
+					'click #${item}'(e, instance){
+						instance.$('#${item}Count').text(0)
+						let count = Meteor.call('${item}')
+						instance.$('#${item}Count').text(count)
+					},
+				`
+	methodsString += oneMethod
 })
+eventsTemplate = eventsTemplate.replace(/methods/, methodsString)
+// console.log(eventsTemplate)
+eval(eventsTemplate)
 
 Template.insertSingleCost.helpers({
 	allWidgets(){

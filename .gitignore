@@ -2,3 +2,4 @@ node_modules/
 .meteor/local
 .meteor/dev_bundle
 server/output
+.fuse*
