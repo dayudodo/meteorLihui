@@ -8,13 +8,17 @@ Template.barcodeScanner.helpers({
   },
   result(){
       return Session.get('result')
-  }
+  },
+  sales(){
+    var product = Session.get('result')
+    return SaleTable.find({barCode: product.barCode})
+  },
 })
 
 if (Meteor.isCordova) {
 
   Template.barcodeScanner.events({
-    'click button': function () {
+    'click #scan': function () {
 
       cordova.plugins.barcodeScanner.scan(
         function (result) {
