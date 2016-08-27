@@ -1,9 +1,14 @@
 'use strict'
+import { Products }  from '/imports/api/products'
+import { SaleTable } from '/imports/api/sale_table'
 
 Template.barcodeScanner.helpers({
   isMobile(){
     return Meteor.isCordova
   },
+  result(){
+      return Session.get('result')
+  }
 })
 
 if (Meteor.isCordova) {
@@ -13,10 +18,16 @@ if (Meteor.isCordova) {
 
       cordova.plugins.barcodeScanner.scan(
         function (result) {
-          alert("We got a barcode\n" +
-            "Result: " + result.text + "\n" +
-            "Format: " + result.format + "\n" +
-            "Cancelled: " + result.cancelled);
+          // alert("We got a barcode\n" +
+          //   "Result: " + result.text + "\n" +
+          //   "Format: " + result.format + "\n" +
+          //   "Cancelled: " + result.cancelled);
+          //根据条码找到对应的产品信息
+          var product = Products.findOne({ barCode: result.text })
+          console.log( product.barCode, product.productName )
+          Session.set('result', product )
+
+
         }, 
         function (error) {
           alert("Scanning failed: " + error);

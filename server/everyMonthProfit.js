@@ -34,7 +34,7 @@ export function everyMonthProfit(){
 		// console.log(month[2], allSales.length, allProfit)
 		result.push([month[2], allProfit])
 	})
-	console.log(result)
+	// console.log(result)
 	return result
 }
 
