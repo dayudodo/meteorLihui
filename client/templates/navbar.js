@@ -1,5 +1,5 @@
 Template.navbar.events({
-	'click a'(){
+	'click .menu a'(){
 		$('.collapse').collapse('hide')
 	}
 })
