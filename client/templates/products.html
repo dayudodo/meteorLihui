@@ -1,12 +1,18 @@
 <template name="products">
 	<div class="col-md-12">
+		<button id="showBarcode">二维码</button>
 		<table className="table table-striped">
 		  <thead>
 		  </thead>
 		  <tbody>
 		  {{#each product  in products}}
 			  <tr >
-				{{product.productName}}		    
+				<td>
+					{{product.productName}}		    
+				</td>
+				<td>
+					<img id="{{product.barCode}}" />
+				</td>
 			  </tr>
 		  {{/each}}
 		  </tbody>
