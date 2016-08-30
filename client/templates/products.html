@@ -1,22 +1,39 @@
 <template name="products">
-	<div class="col-md-12">
+	<div class="col-md-">
 		<button id="showBarcode">二维码</button>
-		<table className="table table-striped">
+		<table class="table table-striped">
 		  <thead>
+		  	<tr>
+		  		<th>国际条码</th>
+		  		<th>商品名称</th>
+		  		<th>商品规格</th>
+		  		<th>库存</th>
+		  		<th>二维码</th>
+		  	</tr>
 		  </thead>
 		  <tbody>
 		  {{#each product  in products}}
 			  <tr >
 				<td>
+					{{product.barCode}}		    
+				</td>
+				<td>
 					{{product.productName}}		    
 				</td>
 				<td>
-					<img id="{{product.barCode}}" />
+					{{product.model}}		    
+				</td>
+				<td>
+					{{product.inventory}}		    
+				</td>
+
+				<td>
+					<img id="img{{product.barCode}}" />
+					{{ generateBarCode product.barCode}}
 				</td>
 			  </tr>
 		  {{/each}}
 		  </tbody>
 		</table>
 	</div>
-
 </template>

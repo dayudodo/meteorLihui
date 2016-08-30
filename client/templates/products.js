@@ -29,7 +29,7 @@ Template.products.helpers({
 	generateBarCode(barCode){
 		// console.log(barCode)
 		
-		let bc = `#${barCode}`
+		let bc = `#img${barCode}`
 		// console.log(bc)
 		$(bc).JsBarcode(barCode)
 		// console.log($(bc))
@@ -47,8 +47,10 @@ Template.products.events({
 		$('img').each(function(){
 			// console.log(img)
 			// console.log($(this).attr('id'))
-			var bc = $(this).attr('id')
-			$("#"+bc).JsBarcode(bc)
+			var imgId = $(this).attr('id')
+			var barCode = imgId.substring(3)
+			// $("#"+imgId).JsBarcode(barCode).options({height:40})
+			JsBarcode("#"+imgId, barCode, {height:40})
 		})
 	},
 })
