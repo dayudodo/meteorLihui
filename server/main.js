@@ -13,6 +13,7 @@ import { checkSameBarCode } from './checkSameBarCode'
 import { everyMonthProfit, s_profitTop10 } from './everyMonthProfit'
 import { caculateInventory } from './caculateInventory'
 import { importToSaleTable } from './importToSaleTable'
+import { exportProducts } from './exportProducts'
 
 import path from 'path'
 
@@ -109,6 +110,9 @@ Meteor.startup(() => {
     },
     'caculateInventory'(index){
       return caculateInventory(index)
+    },
+    'exportProducts'(){
+      exportProducts()
     }
   })
   

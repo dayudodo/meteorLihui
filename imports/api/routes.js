@@ -10,18 +10,9 @@ Router.configure({
 
 Router.route('/',function(){
 	this.render('products')
-},{
-	name:'/'
 })
 
-Router.route('/products',{
-	waitOn(){
-		return Meteor.subscribe('products');
-	},
-	action(){
-		this.render('products');
-	}
-})
+Router.route('/products')
 
 Router.route('/findSingleCost',function(){
 	this.render("findSingleCost", {

@@ -17,6 +17,7 @@ let functionalArray = [
 	["everyMonthProfit","每个月利润"],
 	["caculateInventory","计算库存"],
 	["dropDatabase","清空数据库","btn-warning"],
+	["exportProducts","导出产品表到excel"],
 ]
 
 let eventsTemplate = `

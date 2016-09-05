@@ -60,6 +60,7 @@ export function importToProducts(impFilename){
               }
             }
             obj["createdAt"] = new Date()
+            obj["importSource"] = onlyFilename
             let result = Products.insert(obj, function(err) {
               if (err) { 
                 console.log(valueOfRequiredField)

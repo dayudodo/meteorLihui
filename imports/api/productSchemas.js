@@ -113,6 +113,11 @@ var ProductSchemas = {};
         optional: true,
         max: 512,
     },
+    importSource:{
+        type: String,
+        label:"导入来源",
+        optional: true
+    },
     createdAt: {
         type: Date,
         label: "商品数据导入时间",
