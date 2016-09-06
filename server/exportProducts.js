@@ -9,7 +9,11 @@ export function exportProducts(){
 	inventoryArr.forEach(inventory_name=>{
 		let exportFileName = `${absoluteBasePath}/server/output/products${inventory_name}.xlsx`
 		let nameReg = new RegExp(inventory_name,'i')
-		let allProducts = Products.find({importSource: nameReg}).fetch()
+		let allProducts = Products.find(
+			{ importSource: nameReg },
+			{ sort:
+			 	{barCode:1}
+			}).fetch()
 		allProducts.forEach(row=>{
 			manualSaleArr.push([row.barCode, 
 								row.productName, 
