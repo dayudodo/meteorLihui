@@ -43,6 +43,8 @@ Meteor.startup(() => {
 
       ,['三禾7月老店.xls','2016-07-01']
       ,['三禾7月小西门明细.xls','2016-07-01']
+
+      ,['三禾8月老店销量.xls', '2016-08-01']
   ]
   impFileArray.forEach(item=>{
     item[0] = absoluteBasePath + '/server/excels/' + item[0]
