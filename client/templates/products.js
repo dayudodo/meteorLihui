@@ -6,7 +6,7 @@ import  JsBarcode  from 'jsbarcode'
 Template.products.onRendered(function(){
 	// $('#testimg').JsBarcode('13515')
 	this.$('img').each(function(){
-		console.log($(this))
+		// console.log($(this))
 		// console.log($(this).attr('id'))
 	})
 	// console.log(this.findAll('img'))
@@ -30,14 +30,20 @@ Template.products.helpers({
 })
 
 Template.products.events({
-	'click #showBarcode'(e, instance){
+	'click #showBarcode'(){
 		$('img').each(function(){
 			// console.log(img)
 			// console.log($(this).attr('id'))
-			var imgId = $(this).attr('id')
-			var barCode = imgId.substring(3)
-			// $("#"+imgId).JsBarcode(barCode).options({height:40})
-			JsBarcode("#"+imgId, barCode, {height:40})
+			let imgId = $(this).attr('id')
+			let barCode = imgId.substring(5)
+			console.log(imgId, barCode)
+			console.log(new String(barCode))
+			let is13524 = new String(barCode) == new String(13524)
+			console.log(is13524)
+			if (! is13524) {
+				// $("#"+imgId).JsBarcode(barCode).options({height:40})
+				JsBarcode("#"+imgId, barCode, {height:40})
+			}
 		})
 	},
 })
