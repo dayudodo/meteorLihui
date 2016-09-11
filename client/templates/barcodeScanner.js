@@ -1,6 +1,7 @@
 'use strict'
 import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
+import { checkProducts } from '/imports/api/checkProducts'
 
 Template.barcodeScanner.helpers({
   isMobile(){

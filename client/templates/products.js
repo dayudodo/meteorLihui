@@ -25,6 +25,9 @@ Template.products.helpers({
 				sort: { createdAt: -1 }, 
 				limit: 20 
 			})
+	},
+	pureNumber(string){
+		return new Number(string)
 	}
 
 })
@@ -35,15 +38,9 @@ Template.products.events({
 			// console.log(img)
 			// console.log($(this).attr('id'))
 			let imgId = $(this).attr('id')
-			let barCode = imgId.substring(5)
-			console.log(imgId, barCode)
-			console.log(new String(barCode))
-			let is13524 = new String(barCode) == new String(13524)
-			console.log(is13524)
-			if (! is13524) {
+			let barCode = imgId.substring(3)
 				// $("#"+imgId).JsBarcode(barCode).options({height:40})
-				JsBarcode("#"+imgId, barCode, {height:40})
-			}
+			JsBarcode("#"+imgId, barCode, {height:40})
 		})
 	},
 })

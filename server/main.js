@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor'
 import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
 import { importFileTable } from '/imports/api/importFile_table'
+import { checkProducts } from '/imports/api/check_products'
 // import { importToProducts } from './importToProducts'
 import { updateProductSingle } from './updateProductSingle'
 import { updateSaleSingleFromProduct } from './updateSaleSingleFromProduct'
@@ -151,6 +152,17 @@ Meteor.startup(() => {
       return true;
     }
   });
+  checkProducts.allow({
+    insert: function(){
+      return true;
+    },
+    update: function(){
+      return true;
+    },
+    remove: function(){
+      return true;
+    }
+  })
 
 });
 
