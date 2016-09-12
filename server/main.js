@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor'
 import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
 import { importFileTable } from '/imports/api/importFile_table'
-import { checkProducts } from '/imports/api/check_products'
+import { checkProducts } from '/imports/api/checkProducts'
 // import { importToProducts } from './importToProducts'
 import { updateProductSingle } from './updateProductSingle'
 import { updateSaleSingleFromProduct } from './updateSaleSingleFromProduct'
@@ -68,6 +68,9 @@ Meteor.startup(() => {
   });
   Meteor.publish('saletable', function () {
     return SaleTable.find()
+  });
+  Meteor.publish('checkproducts', function () {
+    return checkProducts.find()
   });
   Meteor.publish('everyMonthProfit', function(){
     return everyMonthProfit()

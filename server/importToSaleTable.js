@@ -6,10 +6,11 @@ import { SaleTable } from '/imports/api/sale_table'
 import xlsx from 'node-xlsx'
 import path from 'path'
 import fs from 'fs'
-// import md5 from 'blueimp-md5'
-var crypto = require('crypto');
+import blueimpMd5 from 'blueimp-md5'
+// var crypto = require('crypto');
 function md5 (text) {
-  return crypto.createHash('md5').update(text,'utf8').digest('hex');
+  // return crypto.createHash('md5').update(text,'utf8').digest('hex');
+  return blueimpMd5(text)
 }
 
 export function importToSaleTable(impExcel){

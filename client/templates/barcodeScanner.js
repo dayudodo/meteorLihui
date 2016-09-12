@@ -14,6 +14,15 @@ Template.barcodeScanner.helpers({
     var product = Session.get('result')
     return SaleTable.find({barCode: product.barCode})
   },
+  checkProducts(){
+    return checkProducts.find({},
+    {$sort:
+      {
+        updateAt: -1
+      }
+
+    })
+  },
 })
 
 if (Meteor.isCordova) {

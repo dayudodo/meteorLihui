@@ -5,6 +5,7 @@
 // import { renderRoutes } from './components/routes.js'
 import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
+import { checkProducts } from '/imports/api/checkProducts'
 import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random'
 import echarts from 'echarts'
@@ -17,10 +18,12 @@ import echarts from 'echarts'
 // });
 window.Products = Products
 window.SaleTable = SaleTable
+window.checkProducts = checkProducts
 window.Random = Random
 window.echarts = echarts
 Meteor.subscribe('products');
 Meteor.subscribe('saletable');
+Meteor.subscribe('checkproducts');
 
 Meteor.startup(() => {
  // render( renderRoutes(), document.getElementById('app'));

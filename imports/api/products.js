@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { ProductSchemas } from '/imports/api/productSchemas'
 import { SaleTable } from '/imports/api/sale_table'
+
 import Session from 'meteor/session'
 import moment from 'moment'
 

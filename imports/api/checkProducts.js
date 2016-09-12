@@ -1,19 +1,21 @@
 import { Mongo } from 'meteor/mongo';
+import { Products }  from '/imports/api/products'
+
 const checkProducts = new Mongo.Collection('checkproducts');
 
 var CheckProductSchemas = {};
 
 
  CheckProductSchemas.Check = new SimpleSchema({
-    product_id:{
+    productId:{
         type: String,
         label:'产品Id',
+        optional: true,
     },
     barCode: {
         type: String,
         label: "国际条码",
         index: 1,
-        unique: true,
         max: 200,
     },
     productName: {
@@ -49,5 +51,10 @@ var CheckProductSchemas = {};
 });
 
 checkProducts.attachSchema(CheckProductSchemas.Check)
+checkProducts.helpers({
+    product(){
+        return Products.findOne({barCode: this.barCode})
+    }
+})
 
 export { checkProducts }

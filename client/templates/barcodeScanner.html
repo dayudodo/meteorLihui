@@ -13,4 +13,39 @@
 	{{else}}
 	  <h1>请使用手机版本扫描</h1>
 	{{/if}}
+
+	<table class="table table-striped">
+	  <thead>
+	  	<tr>
+	  		<th>国际条码</th>
+	  		<th>商品名称</th>
+	  		<th>商品规格</th>
+	  		<th>库存</th>
+	  		<th>二维码</th>
+	  	</tr>
+	  </thead>
+	  <tbody>
+	  {{#each check  in checkProducts}}
+		  <tr >
+			<td>
+				{{check.barCode}}		    
+			</td>
+			<td>
+				{{check.product.productName}}		    
+			</td>
+			<td>
+				{{check.product.model}}		    
+			</td>
+			<td>
+				{{check.product.inventory}}		    
+			</td>
+
+			<td>
+				<img id="img{{product.barCode}}" />
+			</td>
+		  </tr>
+	  {{/each}}
+	  </tbody>
+	</table>
 </template>
+
