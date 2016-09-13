@@ -2,10 +2,7 @@
 import echarts from 'echarts'
 import { twoDecimal } from '/imports/api/common'
 
-Template.registerHelper('twoDecimal',(num)=>{
-		return Math.round(num*100)/100
-	}
-)
+
 
 Template.huiCharts.onRendered(function () {
 	var template = this;
@@ -13,7 +10,13 @@ Template.huiCharts.onRendered(function () {
 		if(err){ console.log(err); }
 		else{
 			var myChart = echarts.init(template.find('#profit'));
-			var dataSource = (_.pluck(result,1)).map(item=>twoDecimal(item))
+			var dataSourceArr = (_.pluck(result,1)).map(item=>twoDecimal(item))
+			var monthNameArr = _.pluck(result,0)
+			var money = 0
+			dataSourceArr.forEach(item=>{ money= money+ item})
+			//计算月平均利润并保存在averagePerMonth中
+			Session.set('averagePerMonth', money/monthNameArr.length)
+
 			var option = {
 				color:['#3398DB'],
 			    title: {
@@ -25,13 +28,13 @@ Template.huiCharts.onRendered(function () {
 			    },
 			    calculable : true,
 			    xAxis: {
-			        data: _.pluck(result,0)
+			        data: monthNameArr
 			    },
 			    yAxis: {},
 			    series: {
 		                name: '利润',
 		                type: 'bar',
-		                data: dataSource
+		                data: dataSourceArr
 		            }
 			};
 			// 使用刚指定的配置项和数据显示图表。
@@ -69,6 +72,9 @@ Template.huiCharts.helpers({
 	},
 	currentProfit(){
 		return Session.get('currentProfit')
+	},
+	averagePerMonth(){
+		return Session.get('averagePerMonth')
 	},
 
 })

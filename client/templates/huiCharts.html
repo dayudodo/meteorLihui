@@ -1,10 +1,11 @@
 <template name="huiCharts">
 	<div class="row">
+		<h2>月平均利润：{{ averagePerMonth }}</h2>
 		<div id="profit" style="height:500px; " class="col-md-6"></div>
 		<div class="col-md-6">
 			{{#if profitTop10}}
 				<center><h2 >{{ month }}利润前十</h2></center>
-				<center><h2 >合计：{{ currentProfit }}元</h2></center>
+				<center><h2 >本月合计：{{ currentProfit }}元</h2></center>
 				<table class="table table-striped">
 				      <thead>
 				        <tr>

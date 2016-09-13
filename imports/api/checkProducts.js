@@ -10,19 +10,19 @@ var CheckProductSchemas = {};
     productId:{
         type: String,
         label:'产品Id',
+        index: 1,
         optional: true,
     },
     barCode: {
         type: String,
         label: "国际条码",
-        index: 1,
         max: 200,
+        unique: true,
     },
     productName: {
         type: String,
         label: "商品名称",
         optional: true,
-        index: 1,
         max: 200,
     },
     count:{

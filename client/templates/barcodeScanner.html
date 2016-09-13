@@ -1,7 +1,10 @@
 <template name="barcodeScanner">
 	{{#if isMobile}}
-	  <button id="scan">扫一扫</button>
-	  
+	  <form action="" class="save_check">
+		  <label for="barCode">国际条码</label> <input type="text" name="barCode"><button id="scan">扫一扫</button>
+		  <label for="count">数量</label> <input type="number" name="count">
+		  <button class="btn btn-primary" id="save" type="submit">保存</button>
+	  </form>
 	  {{#if result}}
 		  <h2>结果</h2>
 	  	  {{result.barCode}} {{result.productName}} 
@@ -13,20 +16,22 @@
 	{{else}}
 	  <h1>请使用手机版本扫描</h1>
 	{{/if}}
-
+	<button class="btn btn-primary" id="showBarcode">二维码</button>
 	<table class="table table-striped">
 	  <thead>
 	  	<tr>
 	  		<th>国际条码</th>
 	  		<th>商品名称</th>
+	  		<th>现有数量</th>
 	  		<th>商品规格</th>
 	  		<th>库存</th>
 	  		<th>二维码</th>
+	  		<th>操作</th>
 	  	</tr>
 	  </thead>
 	  <tbody>
 	  {{#each check  in checkProducts}}
-		  <tr >
+		  <tr class="{{isSameCount_Inventory check}}">
 			<td>
 				{{check.barCode}}		    
 			</td>
@@ -34,14 +39,20 @@
 				{{check.product.productName}}		    
 			</td>
 			<td>
+				{{check.count}}
+			</td>
+			<td>
 				{{check.product.model}}		    
 			</td>
 			<td>
 				{{check.product.inventory}}		    
 			</td>
-
 			<td>
-				<img id="img{{product.barCode}}" />
+				<img id="img{{pureNumber check.barCode}}" />
+			</td>
+			<td>
+				<button class='delete btn btn-danger' barCode="{{check.barCode}}">删除</button>
+				<button class='update'>修改</button>
 			</td>
 		  </tr>
 	  {{/each}}

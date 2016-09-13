@@ -8,11 +8,10 @@
 	         <span class="icon-bar"></span>
 	         <span class="icon-bar"></span>
 	       </button>
-	       <a class="navbar-brand" href="#">商品列表</a>
 	     </div>
 	     <div id="navbar" class="collapse navbar-collapse">
 	       <ul class="nav navbar-nav menu">
-	         <li class="active"><a href="/">Home</a></li>
+	         <li><a href="/">商品列表</a></li>
          {{#if currentUser}}
 		     <li><a href="{{pathFor 'huiCharts'}}">图表</a></li>
 		     <li><a href="{{pathFor 'insertSingleCost'}}">widgets</a></li>
@@ -21,7 +20,7 @@
          {{/if}}
 	         <li><a href="{{pathFor 'about'}}">About</a></li>
 	       </ul>
-	       <ul class="nav navbar-nav pull-right">
+	       <ul class="nav navbar-nav ">
 		       	{{> loginButtons }}
 	       </ul>
 	     </div><!--/.nav-collapse -->

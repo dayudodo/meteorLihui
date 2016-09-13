@@ -13,26 +13,30 @@
 		  </thead>
 		  <tbody>
 		  {{#each product  in products}}
-			  <tr >
-				<td>
-					{{product.barCode}}		    
-				</td>
-				<td>
-					{{product.productName}}		    
-				</td>
-				<td>
-					{{product.model}}		    
-				</td>
-				<td>
-					{{product.inventory}}		    
-				</td>
-
-				<td>
-					<img id="img{{pureNumber product.barCode}}" />
-				</td>
-			  </tr>
+			{{>oneProduct product}}
 		  {{/each}}
 		  </tbody>
 		</table>
 	</div>
+</template>
+
+<template name='oneProduct'>
+	  <tr >
+		<td>
+			{{barCode}}		    
+		</td>
+		<td>
+			{{productName}}		    
+		</td>
+		<td>
+			{{model}}		    
+		</td>
+		<td>
+			{{inventory}}		    
+		</td>
+
+		<td>
+			<img id="img{{pureNumber barCode}}" />
+		</td>
+	  </tr>
 </template>

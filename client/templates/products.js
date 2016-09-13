@@ -3,6 +3,7 @@ import { Template } from 'meteor/templating';
 import  JsBarcode  from 'jsbarcode'
 // var JsBarcode = require('jsbarcode');
 
+
 Template.products.onRendered(function(){
 	// $('#testimg').JsBarcode('13515')
 	this.$('img').each(function(){
@@ -26,9 +27,6 @@ Template.products.helpers({
 				limit: 20 
 			})
 	},
-	pureNumber(string){
-		return new Number(string)
-	}
 
 })
 
