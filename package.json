@@ -5,6 +5,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "blueimp-md5": "^2.3.0",
     "echarts": "^3.2.2",
     "jsbarcode": "^3.3.20",

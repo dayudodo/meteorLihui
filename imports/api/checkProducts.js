@@ -30,6 +30,12 @@ var CheckProductSchemas = {};
         label:'数量',
         optional: true,
     },
+    comment1:{
+        type: String,
+        label:"备注1",
+        optional: true,
+        max: 512,
+    },
     createdAt: {
         type: Date,
         label: "创建时间",

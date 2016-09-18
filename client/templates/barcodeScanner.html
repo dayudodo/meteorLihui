@@ -13,7 +13,7 @@
 			  <label for="countInput" >数量</label> 
 			  <input type="number" name="count" class="form-control" id="countInput">
 		  </div>
-		  <button class="btn btn-primary form-control" id="save" type="submit" >修改</button>
+		  <button class="btn btn-primary form-control" id="save" type="submit" >确定</button>
 		  (添加相同的国际条码会在原有的基础w上增加)
 	  </form>
 	<button class="btn btn-default" id="showBarcode">二维码</button>
@@ -23,6 +23,7 @@
 	  		<th>国际条码</th>
 	  		<th>商品名称</th>
 	  		<th>现有数量</th>
+	  		<th>备注1</th>
 	  		<th>商品规格</th>
 	  		<th>库存</th>
 	  		<th>二维码</th>
@@ -38,9 +39,17 @@
 			<td>
 				{{check.product.productName}}
 			</td>
-			<td>
+			<td class=" col-md-2">
 				<form action="" class="update_count form-inline" >
 					<input  type="number" class="form-control" value="{{check.count}}" name="count">
+					<input type="hidden" value="{{check.barCode}}" name="barCode">
+					<button type="submit" class="form-control">确定</button>
+
+				</form>
+			</td>
+			<td>
+				<form action="" class="update_comment1 form-inline" >
+					<input  type="text" class="form-control" value="{{check.comment1}}" name="comment1">
 					<input type="hidden" value="{{check.barCode}}" name="barCode">
 					<button type="submit" class="form-control">确定</button>
 

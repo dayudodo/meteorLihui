@@ -15,7 +15,7 @@ Template.huiCharts.onRendered(function () {
 			var money = 0
 			dataSourceArr.forEach(item=>{ money= money+ item})
 			//计算月平均利润并保存在averagePerMonth中
-			Session.set('averagePerMonth', money/monthNameArr.length)
+			Session.set('averagePerMonth', twoDecimal(money/monthNameArr.length) )
 
 			var option = {
 				color:['#3398DB'],

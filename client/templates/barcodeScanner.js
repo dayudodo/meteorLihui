@@ -17,11 +17,10 @@ Template.barcodeScanner.helpers({
   },
   checkProducts(){
     return checkProducts.find({},
-    {$sort:
+    {sort:
       {
-        updateAt: -1
+        createdAt: -1
       }
-
     })
   },
   isSameCount_Inventory(check){
@@ -74,13 +73,17 @@ Template.barcodeScanner.helpers({
       // console.log(barCode, count)
       var cProduct = checkProducts.findOne({barCode: barCode})
       if (cProduct) {
+        var needUp = count?count:0
         checkProducts.update(cProduct._id, 
           {$inc:
-            {count: count}
-          })
+            {count: needUp}
+          }
+        )
+        toastr.success(`数量新增${needUp}`);
       }
       else{
-        checkProducts.insert({barCode: barCode, count: count})
+        var createdAt = new Date()
+        checkProducts.insert({barCode: barCode, count: count, createdAt: createdAt})
       }  
     },
     'submit .update_count'(event){
@@ -92,10 +95,26 @@ Template.barcodeScanner.helpers({
       checkProducts.update({_id:cProduct._id},{$set:{count: count}},  function(err){
           if(err){ 
             console.log(err) 
-            toastr.error('未知错误');
+            toastr.error(err);
           }
           else{
-            toastr.success(`现有数量更新为${count}`);
+            toastr.success(`数量更新为${count}`);
+          }
+        })
+    },
+    'submit .update_comment1'(event){
+      event.preventDefault();
+      var barCode = event.target.barCode.value;
+      var comment1 = event.target.comment1.value;
+      // console.log(barCode, comment1)
+      var cProduct = checkProducts.findOne({barCode: barCode})
+      checkProducts.update({_id:cProduct._id},{$set:{comment1: comment1}},  function(err){
+          if(err){ 
+            console.log(err) 
+            toastr.error(err);
+          }
+          else{
+            toastr.success(`备注1更新为${comment1}`);
           }
         })
     },
