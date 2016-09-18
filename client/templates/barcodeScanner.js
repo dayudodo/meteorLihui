@@ -73,13 +73,17 @@ Template.barcodeScanner.helpers({
       // console.log(barCode, count)
       var cProduct = checkProducts.findOne({barCode: barCode})
       if (cProduct) {
-        var needUp = count?count:0
+        if (!_.isNumber(count)) 
+        {
+          toastr.error('数量一定得是数字！')
+          return
+        }
         checkProducts.update(cProduct._id, 
           {$inc:
-            {count: needUp}
+            {count: count}
           }
         )
-        toastr.success(`数量新增${needUp}`);
+        toastr.success(`数量新增${count}`);
       }
       else{
         var createdAt = new Date()
