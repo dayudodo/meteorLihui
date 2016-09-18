@@ -31,3 +31,4 @@ blaze-html-templates@1.0.4
 aldeed:autoform
 session@1.1.6
 shell-server
+chrismbeckett:toastr

@@ -20,14 +20,13 @@ Template.products.onRendered(function(){
 
 Template.products.helpers({
 	products(){
-		return window.Products.find(
+		return Products.find(
 			{}, 
-			{ 
-				sort: { createdAt: -1 }, 
+			{ $sort: 
+				{ createdAt: -1 }, 
 				limit: 20 
 			})
 	},
-
 })
 
 Template.products.events({
@@ -42,6 +41,3 @@ Template.products.events({
 		})
 	},
 })
-
-
-

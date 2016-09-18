@@ -28,8 +28,8 @@ Template.barcodeScanner.helpers({
     // console.log(check)
     if (check.count != check.product.inventory) {
       return 'danger'
-    };
-  }
+    }
+  },
 
 })
 
@@ -72,9 +72,9 @@ Template.barcodeScanner.helpers({
       var barCode = event.target.barCode.value;
       var count = event.target.count.value;
       // console.log(barCode, count)
-      var product = checkProducts.findOne({barCode: barCode})
-      if (product) {
-        checkProducts.update(product._id, 
+      var cProduct = checkProducts.findOne({barCode: barCode})
+      if (cProduct) {
+        checkProducts.update(cProduct._id, 
           {$inc:
             {count: count}
           })
@@ -83,13 +83,29 @@ Template.barcodeScanner.helpers({
         checkProducts.insert({barCode: barCode, count: count})
       }  
     },
+    'submit .update_count'(event){
+      event.preventDefault();
+      var barCode = event.target.barCode.value;
+      var count = event.target.count.value;
+      // console.log(barCode, count)
+      var cProduct = checkProducts.findOne({barCode: barCode})
+      checkProducts.update({_id:cProduct._id},{$set:{count: count}},  function(err){
+          if(err){ 
+            console.log(err) 
+            toastr.error('未知错误');
+          }
+          else{
+            toastr.success(`现有数量更新为${count}`);
+          }
+        })
+    },
     'click .delete'(e, instance){
       if (confirm('确定删除吗？')) {
         var barCode = instance.$(e.target).attr('barCode')
         // console.log(instance.$(e.target).attr('barCode'))
-        var checkProduct = checkProducts.findOne({barCode: barCode})
-        checkProducts.remove({_id: checkProduct._id})
-      };
-    }
+        var cProduct = checkProducts.findOne({barCode: barCode})
+        checkProducts.remove({_id: cProduct._id})
+      }
+    },
 });
 
