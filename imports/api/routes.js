@@ -22,8 +22,8 @@ Router.route('/findSingleCost',function(){
 	})
 })
 
-Router.route('/insertSingleCost',function(){
-	this.render("insertSingleCost")
+Router.route('/widgets',function(){
+	this.render("widgets")
 })
 
 Router.route('huiCharts')

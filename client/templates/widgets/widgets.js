@@ -21,7 +21,7 @@ let functionalArray = [
 ]
 
 let eventsTemplate = `
-Template.insertSingleCost.events({
+Template.widgets.events({
 	methods
 })
 `
@@ -41,7 +41,7 @@ eventsTemplate = eventsTemplate.replace(/methods/, methodsString)
 // console.log(eventsTemplate)
 eval(eventsTemplate)
 
-Template.insertSingleCost.helpers({
+Template.widgets.helpers({
 	allWidgets(){
 		let objArr = []
 		functionalArray.forEach(row=>{
@@ -51,7 +51,7 @@ Template.insertSingleCost.helpers({
 		return objArr
 	}
 })
-// Template.insertSingleCost.events({
+// Template.widgets.events({
 // 	//从excel更新产品表中的单价
 // 	'click #updateProductSingle'(e,instance){
 // 		instance.$('#updateProductSingleCount').text(0)
