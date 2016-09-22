@@ -77,6 +77,7 @@ Meteor.startup(() => {
   })
 
   Meteor.methods({
+
     'updateProductSingle'(){
         //从Excel中读取，所以需要在服务器端完成这个任务。
         updateProductSingle(costArray[0][0])

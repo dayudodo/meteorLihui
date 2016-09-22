@@ -1,5 +1,9 @@
 <template name="widgets">
 	<h1>功能性模块Widgets</h1>
+	<div>
+		<a class='btn btn-lg btn-primary' id="allExecute">执行以下所有程序</a>
+		结果：<span id="allExecuteCount">0</span>
+	</div>
 	{{#each allWidgets}}
 		{{> oneWidget}}
 	{{/each}}

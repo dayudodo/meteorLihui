@@ -22,6 +22,15 @@ let functionalArray = [
 
 let eventsTemplate = `
 Template.widgets.events({
+	'click #allExecute'(){
+		functionalArray.forEach(row=>{
+			
+			if (!row[2]) {
+				let callName = row[0]
+				Meteor.call(callName)
+			}
+		})
+	},
 	methods
 })
 `
@@ -46,6 +55,10 @@ Template.widgets.helpers({
 		let objArr = []
 		functionalArray.forEach(row=>{
 			let obj = _.object(["widgetName","widgetExplanation","class"], row)
+			//如果没有给定CSS类，那么默认的就是btn-info的样式，不象清空数据库一样危险操作
+			if (_.isEmpty(row[2])) {
+				obj.class="btn-info"
+			}
 			objArr.push(obj)
 		})
 		return objArr
