@@ -2,6 +2,7 @@
 import { Products }  from '/imports/api/products'
 import { SaleTable } from '/imports/api/sale_table'
 import { checkProducts } from '/imports/api/checkProducts'
+import Quagga from 'quagga';
 
 Template.barcodeScanner.helpers({
   isMobile(){
@@ -66,21 +67,43 @@ Template.barcodeScanner.helpers({
         JsBarcode("#"+imgId, barCode, {height:40})
       })
     },
+    'click #autoScan'(){
+      Quagga.decodeSingle({
+          decoder: {
+              readers: ["ean_reader"] // List of active readers
+          },
+          numOfWorkers: 0,  // Needs to be 0 when used within node
+         inputStream: {
+             size: 800 
+         },
+          src: '20160910_092722.jpg' // or 'data:image/jpg;base64,' + data 
+      }, function(result){
+          if(result.codeResult) {
+              console.log("result", result.codeResult.code);
+          } else {
+              console.log("not detected");
+          }
+      });
+    },
     'submit .save_check'(event){
       event.preventDefault();
       var barCode = event.target.barCode.value;
-      var count = event.target.count.value;
+      var count = parseInt(event.target.count.value)
+      count = _.isNaN(count)? 0: count
       // console.log(barCode, count)
+      // console.log('count:',count,typeof count)
       var cProduct = checkProducts.findOne({barCode: barCode})
       if (cProduct) {
-        if (!_.isNumber(count)) 
+        if (!_.isNumber(count) || count < 1  ) 
         {
-          toastr.error('数量一定得是数字！')
+          
+          toastr.error('数量一定要大于1！')
           return
         }
         checkProducts.update(cProduct._id, 
-          {$inc:
-            {count: count}
+          { $inc:
+              {count: count},
+            updatedAt: new Date
           }
         )
         toastr.success(`数量新增${count}`);

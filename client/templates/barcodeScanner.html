@@ -1,4 +1,5 @@
 <template name="barcodeScanner">
+	<!-- <button id="autoScan">自动识别</button> -->
 	{{#if isMobile}}
 		<button id="scan" class="btn  btn-primary">扫一扫</button>
 	{{else}}
@@ -13,7 +14,7 @@
 			  <label for="countInput" >数量</label> 
 			  <input type="number" name="count" class="form-control" id="countInput">
 		  </div>
-		  <button class="btn btn-primary form-control" id="save" type="submit" >确定</button>
+		  <button class="btn btn-primary form-control" type="submit" >确定</button>
 		  (添加相同的国际条码会在原有的基础w上增加)
 	  </form>
 	<button class="btn btn-default" id="showBarcode">二维码</button>
