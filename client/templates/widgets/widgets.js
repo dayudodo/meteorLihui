@@ -31,7 +31,7 @@ Template.widgets.events({
 			}
 		})
 	},
-	methods
+	{{methods}}
 })
 `
 let methodsString = ''
@@ -46,7 +46,7 @@ functionalArray.forEach(row=>{
 				`
 	methodsString += oneMethod
 })
-eventsTemplate = eventsTemplate.replace(/methods/, methodsString)
+eventsTemplate = eventsTemplate.replace(/\{\{methods\}\}/, methodsString)
 // console.log(eventsTemplate)
 eval(eventsTemplate)
 
