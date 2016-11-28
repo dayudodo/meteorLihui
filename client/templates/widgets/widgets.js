@@ -46,9 +46,9 @@ functionalArray.forEach(row=>{
 				`
 	methodsString += oneMethod
 })
-eventsTemplate = eventsTemplate.replace(/\{\{methods\}\}/, methodsString)
+eventsTemplate = eventsTemplate.replace(/\{\{methods\}\}/, methodsString);
 // console.log(eventsTemplate)
-eval(eventsTemplate)
+eval(eventsTemplate);
 
 Template.widgets.helpers({
 	allWidgets(){

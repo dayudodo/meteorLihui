@@ -4,3 +4,4 @@ node_modules/
 server/output
 .fuse*
 npm-debug.log
+.DS_Store

@@ -13,3 +13,4 @@ Template.registerHelper('pureNumber',(string)=>{
 		return new Number(string)
 	}
 )
+

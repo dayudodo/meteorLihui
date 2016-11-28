@@ -125,7 +125,11 @@ Template.barcodeScanner.helpers({
             toastr.error(err);
           }
           else{
-            toastr.success(`数量更新为${count}`);
+            var name = ''
+            if (cProduct.product() ) {
+              name =  cProduct.product().productName 
+            } 
+            toastr.success(`${name}数量更新为${count}`);
           }
         })
     },
@@ -141,7 +145,15 @@ Template.barcodeScanner.helpers({
             toastr.error(err);
           }
           else{
-            toastr.success(`备注1更新为${comment1}`);
+            var name = ''
+            if (cProduct.product() ) {
+              name =  cProduct.product().productName 
+            }
+            if (_.isEmpty(comment1)) {
+              toastr.success('1备注已经清空')
+            }else{
+              toastr.success(`${name}备注1更新为${comment1}`);
+            }
           }
         })
     },
