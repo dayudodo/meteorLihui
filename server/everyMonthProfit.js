@@ -1,5 +1,6 @@
 //计算每个月的利润
 import { SaleTable } from '/imports/api/sale_table'
+//todo 愚蠢的每一个月，完全可以用js里面日期的函数算出来！
 const monthRange = [
 	["2016-01-01","2016-01-31","一月"],
 	["2016-02-01","2016-02-30","二月"],
@@ -16,12 +17,12 @@ export function everyMonthProfit(){
 	monthRange.forEach(month=>{
 		let allProfit = 0
 		let allSales = SaleTable.find(
-		{ 
-			sailTime: 
+		{
+			sailTime:
 			{
 					"$gte":new Date(month[0]),
 					"$lte":new Date(month[1])
-			}	
+			}
 		}).fetch()
 		allSales.forEach(sale=>{
 			if (sale.profit) {
@@ -38,11 +39,12 @@ export function everyMonthProfit(){
 	return result
 }
 
+//为啥写s_呢？表明这是个服务器的方法，也许是个好前缀，或者应该写成server_profitTop10
 export function s_profitTop10(index){
 	let month = monthRange[index]
 	let allSales = SaleTable.find(
-	{ 
-		sailTime: 
+	{
+		sailTime:
 		{
 				"$gte":new Date(month[0]),
 				"$lte":new Date(month[1])
